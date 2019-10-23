@@ -13,7 +13,7 @@
     "url": "https://github.com/MeireUndMeire/von-bartha.git"
   },
   "scripts": {
-    "develop": "DEPLOY_ENV=lbn_published_dev gatsby develop",
+    "develop": "DEPLOY_ENV=lbn_published_stage gatsby develop",
     "stage": "DEPLOY_ENV=lbn_published_stage gatsby develop",
     "stage": "DEPLOY_ENV=lbn_published_production gatsby develop",
     "build": "gatsby build",
