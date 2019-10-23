@@ -15,7 +15,7 @@
   "scripts": {
     "develop": "DEPLOY_ENV=lbn_published_dev gatsby develop",
     "stage": "DEPLOY_ENV=lbn_published_stage gatsby develop",
-    "stage": "DEPLOY_ENV=lbn_published_production gatsby develop",
+    "dev": "DEPLOY_ENV=lbn_published_production gatsby develop",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
