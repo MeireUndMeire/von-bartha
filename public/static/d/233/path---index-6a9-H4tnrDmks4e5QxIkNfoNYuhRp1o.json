@@ -1,0 +1,1 @@
+{"data":{"site":{"siteMetadata":{"title":"WordPress Gatsby Starter","postPrefix":"/blog"}},"allWordpressPost":{"edges":[{"node":{"date":"October 20, 2019","slug":"test1","title":"Test1","excerpt":"<p>Yes this is a test.</p>\n","id":"78ced39c-eb83-5c64-8a16-0834cdf00969","categories":[{"name":"Uncategorized"}]}}]}},"pageContext":{"isCreatedByStatefulCreatePages":true}}
