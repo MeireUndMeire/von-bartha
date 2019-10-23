@@ -1,0 +1,32 @@
+[
+    {
+        "componentChunkName": "component---src-pages-index-js",
+        "jsonName": "index",
+        "path": "/"
+    },
+    {
+        "componentChunkName": "component---src-pages-404-js",
+        "jsonName": "404-html-516",
+        "path": "/404.html"
+    },
+    {
+        "componentChunkName": "component---src-pages-404-js",
+        "jsonName": "404-22d",
+        "path": "/404/"
+    },
+    {
+        "componentChunkName": "component---src-templates-post-js",
+        "jsonName": "blog-test-1-dad",
+        "path": "/blog/test1"
+    },
+    {
+        "componentChunkName": "component---src-templates-category-js",
+        "jsonName": "category-uncategorized-39f",
+        "path": "/category/uncategorized/"
+    },
+    {
+        "componentChunkName": "component---cache-dev-404-page-js",
+        "jsonName": "dev-404-page-5f9",
+        "path": "/dev-404-page/"
+    }
+]
