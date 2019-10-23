@@ -3,7 +3,7 @@ module.exports = {
     title: `WordPress Gatsby Starter`,
     author: `Justin W Hall`,
     description: `A Gatsby WordPress Starter with special love for Netlify`,
-    siteUrl: `https://dev-bartha.netlify.com`,
+    siteUrl: `https://stage-bartha.netlify.com`,
     social: {
       twitter: `justinwhall`,
     },
