@@ -16,11 +16,7 @@ const BlogIndex = (props) => {
       {posts.map(({ node }) => {
         return (
           <div key={node.slug}>
-            <h3
-              style={{
-                marginBottom: rhythm(1 / 4),
-              }}
-            >
+            <h3 style={{ marginBottom: rhythm(1 / 4),}}>
               <Link style={{ boxShadow: `none` }} to={`${postPrefix}/${node.slug}`}>
                 {node.title}
               </Link>
