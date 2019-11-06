@@ -15,22 +15,22 @@ const PageTemplate = (props) => {
 
 export default PageTemplate
 
-export const pageQuery = graphql`
-  query PageByID($id: String!) {
-    site {
-      siteMetadata {
-        title
-        author
-      }
-    }
-    wordpressPage(id: { eq: $id }) {
-      slug
-      title
-      id
-      # featured_media {
-      #   source_url
-      # }
-      content
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query PageByID($id: String!) {
+//     site {
+//       siteMetadata {
+//         title
+//         author
+//       }
+//     }
+//     wordpressPage(id: { eq: $id }) {
+//       slug
+//       title
+//       id
+//       # featured_media {
+//       #   source_url
+//       # }
+//       content
+//     }
+//   }
+// `
