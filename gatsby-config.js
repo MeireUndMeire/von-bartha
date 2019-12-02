@@ -71,8 +71,8 @@ module.exports = {
         perPage: 100,
         // Search and Replace Urls across WordPress content.
         searchAndReplaceContentUrls: {
-          sourceUrl: "vonbartha.com.merlin.metanet.ch",
-          replacementUrl: "stage-bartha.netlify.com",
+          sourceUrl: "https://source-url.com",
+          replacementUrl: "https://replacement-url.com",
         },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
