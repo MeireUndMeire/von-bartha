@@ -25,13 +25,16 @@ module.exports = async ({ actions, graphql }) => {
         }
       }
     }
-    allWordpressWpExhibitions {
+    allWordpressWpExhibitions(sort: {fields: [date]}) {
       edges {
         node {
           path
           id
           slug
           title
+          acf {
+            exhibition_subtitle
+          }
           fields {
             deploy
           }
@@ -41,6 +44,7 @@ module.exports = async ({ actions, graphql }) => {
   }
   `
   ).then(result => {
+    console.log(JSON.stringify(result, null, 4))
     if (result.errors) {
       throw result.errors
     }
@@ -67,7 +71,7 @@ module.exports = async ({ actions, graphql }) => {
           path: edge.node.path,
           component: pageTemplate,
           context: {
-            id: edge.node.id,
+            id: edge.node.id
           }
         })
       }
@@ -81,6 +85,7 @@ module.exports = async ({ actions, graphql }) => {
           component: exhibitionTemplate,
           context: {
             id: edge.node.id,
+            slug: edge.node.slug
           }
         })        
       }

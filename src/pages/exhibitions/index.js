@@ -32,7 +32,7 @@ const ExhibitionItem = styled.div`
 
 const Back = styled.div`
     width: 100%;
-    padding: 30px 0 80px;
+    margin: 30px 0 80px;
 `
 
 
@@ -53,48 +53,54 @@ const ExhibitionsPage = (props) => {
             {allExhibitions.map(exhibition => (
                      <ExhibitionItem className="exhibitionItem" key={exhibition.node.id}>
                        
-                                <p className="date-small">{exhibition.node.acf.starting_date}</p>
+                                <p className="date-small">Until {exhibition.node.acf.starting_date}</p>
                                 <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
-                                <h1>{exhibition.node.title}</h1>
+                                <Link className="link" to={exhibition.node.path}>
+                                    <h1>{exhibition.node.title}</h1>
+                                    <h2>{exhibition.node.exhibition_subtitle}</h2>
+                                </Link>
                             
                     </ExhibitionItem>
             ))}
             </OnViewWrapper>
 
             {/* soon */}
-            <OnViewWrapper>
+            <Heading><h1>soon</h1></Heading>
+            <OnViewWrapper className="OnViewWrapper">
             {allExhibitions.map(exhibition => (
-                     <ExhibitionItem>
-                        <div key={exhibition.node.id}>
+                     <ExhibitionItem className="exhibitionItem" key={exhibition.node.id}>
                        
-                            
                                 <p className="date-small">{exhibition.node.acf.starting_date}</p>
                                 <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
-                                <h1>{exhibition.node.title}</h1>
+                                <Link className="link" to={exhibition.node.path}>
+                                    <h1>{exhibition.node.title}</h1>
+                                    <h2>{exhibition.node.exhibition_subtitle}</h2>
+                                </Link>
                             
-                        </div>
                     </ExhibitionItem>
             ))}
             </OnViewWrapper>
             
 
             {/* past */}
-            <OnViewWrapper>
+            <Heading><h1>past</h1></Heading>
+            <OnViewWrapper className="OnViewWrapper">
             {allExhibitions.map(exhibition => (
-                     <ExhibitionItem>
-                        <div key={exhibition.node.id}>
+                     <ExhibitionItem className="exhibitionItem" key={exhibition.node.id}>
                        
-                            
                                 <p className="date-small">{exhibition.node.acf.starting_date}</p>
                                 <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
-                                <h1>{exhibition.node.title}</h1>
+                                <Link className="link" to={exhibition.node.path}>
+                                    <h1>{exhibition.node.title}</h1>
+                                    <h2>{exhibition.node.exhibition_subtitle}</h2>
+                                </Link>
                             
-                        </div>
                     </ExhibitionItem>
             ))}
             </OnViewWrapper>
+            
             <Back>
-                <Link to="/"><h1>Back</h1></Link>
+                <Link to="/" className="link"><h1>Back</h1></Link>
             </Back>
         </Layout>
     )
@@ -113,12 +119,13 @@ export const exhibitionsQuery = graphql`
           node {
             id
             title
+            path
             acf {
               fullwidth_image {
                 source_url
                 title
               }
-              starting_date
+              starting_date(formatString: "MMM DD YYYY")
               ending_date
               exhibition_subtitle
             }
