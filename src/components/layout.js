@@ -33,22 +33,13 @@ const Subtitle = styled.div`
 `
 
 const StyledNavItems = styled(Link)`
-  font-family: 'Trade-Gothic';
-  font-size: 2rem;
-  color: #1D1D1B;
-  text-decoration: none;
-  box-shadow: none;
   &.active {
     text-decoration: underline;
   }
 `
 
 const StyledNav = styled(Link)`
-  font-family: 'Trade-Gothic';
-  font-size: 2rem;
-  color: #1D1D1B;
-  text-decoration: none;
-  box-shadow: none;
+
 `
 
 const NavBlock = styled.div`
@@ -66,20 +57,23 @@ const Footer = styled.footer`
 `
 
 export default ({ children }) => (
+    <div>
       <div className="layout">
         <GlobalFonts />
         <GlobalStyle />
         <Nav>
           <StyledNavItems
             activeClassName="active" 
-            to="/exhibitions">Exhibitions
+            to="/exhibitions"
+            className="link">Exhibitions
           </StyledNavItems>
           <NavBlock>
-            <StyledNav to="/">Von Bartha</StyledNav>
+            <StyledNav to="/" className="link">Von Bartha</StyledNav>
             <Subtitle>EST. 1970</Subtitle>
           </NavBlock>
         </Nav>
         <div className="pageContent">{children}</div>
-        <Footer>This is the footer</Footer>
       </div>
+      <Footer>This is the footer</Footer>
+    </div>
 )

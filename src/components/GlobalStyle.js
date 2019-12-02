@@ -31,9 +31,24 @@ const GlobalStyle = createGlobalStyle`
     word-break: break-word;
   }
 
+  a:visited, a {
+    color: #1D1D1B;
+    text-decoration: none;
+  }
+
   .layout {
     width: 98vw
     margin: 0 1vw;
+    .fullWidth {
+      width: 100vw;
+      margin-left: -1vw;
+    }
+  }
+  
+  p {
+    font-family: 'Sabon';
+    font-size: 1rem;
+    margin-bottom: .8rem;
   }
 
   img {
@@ -46,12 +61,27 @@ const GlobalStyle = createGlobalStyle`
     text-transform: uppercase;
   }
 
-  .date-small {
+  h2 {
     font-family: 'Trade-Gothic';
-    font-size: 12px;
+    font-size: 2rem;
   }
 
-  form, input, ol, p, select, textarea, ul {
+  .link {
+    font-family: 'Trade-Gothic';
+    font-size: 2rem;
+    color: #1D1D1B;
+    text-decoration: none;
+    box-shadow: none;
+  }
+
+  .date-small {
+    font-family: 'Trade-Gothic';
+    font-size: 10px;
+    text-transform: uppercase;
+    word-spacing: 5px;
+  }
+
+  form, input, ol, select, textarea, ul {
     font-size: 1.3rem;
     margin: 25px 0;
   }
