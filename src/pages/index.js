@@ -1,69 +1,69 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import { rhythm } from "../utils/typography"
+import Layout from '../components/layout';
 
-const BlogIndex = (props) => {
-  const {
-    title,
-    postPrefix,
-  } = props.data.site.siteMetadata;
-  const posts = props.data.allWordpressPost.edges;
+import ExhibitionsModule from "../components/LandingModules/Exhibitions/ExhibitionsModule"
+
+
+const Landing = (props) => {
+  
+  const site = props.data.site.siteMetadata;
+  const allModules = props.data.allWordpressPage.edges;
 
   return (
-    <Layout location={props.location} title={title}>
-      {posts.map(({ node }) => {
-        return (
-          <div key={node.slug}>
-            <h3 style={{ marginBottom: rhythm(1 / 4),}}>
-              <Link style={{ boxShadow: `none` }} to={`${postPrefix}/${node.slug}`}>
-                {node.title}
-              </Link>
-            </h3>
-            <small>{node.date}</small>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: node.excerpt,
-              }}
-            />
-          </div>
-        )
-      })}
-    </Layout>
+  <Layout>
+    <div className="landingPage">
+      <div>
+        {allModules.map((modules, index) => {
+          const modulesList = modules.node.acf.modules_page;
+            return(
+              <div key={index}>
+              {modulesList.map((moduleItem, index) => {
+                const typeName = moduleItem.__typename
+
+                switch(typeName) {
+                  case "WordPressAcf_exhibitions_module":
+                  return <ExhibitionsModule key={index}/>
+                    break;
+                    
+                  //add other modules here
+
+                  default:
+                    break;
+                }
+              })}
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </Layout> 
   )
 }
 
-export default BlogIndex
+export default Landing
 
 export const pageQuery = graphql`
-  query {
+  {
     site {
       siteMetadata {
         title
-        postPrefix
+        siteUrl
       }
     }
-    allWordpressPost(
-       filter: {
-         fields: {
-           deploy: {eq: true}
-         }
-       }
-        limit: 100
-      ) {
+    allWordpressPage(filter: {template: {eq: "template-landing.php"}}) {
       edges {
         node {
-          date(formatString: "MMMM DD, YYYY")
-          slug
           title
-          excerpt
+          slug
           id
-          # featured_media {
-          #  source_url
-          # }
-          categories {
-            name
+          template
+          acf {
+            modules_page {
+              __typename
+            }
           }
         }
       }
