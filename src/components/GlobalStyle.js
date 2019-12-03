@@ -57,13 +57,17 @@ const GlobalStyle = createGlobalStyle`
 
   h1 {
     font-family: 'Trade-Gothic';
-    font-size: 2rem;
+    font-size: 4rem;
+    font-weight: 400;
     text-transform: uppercase;
+    line-height: 4rem;
   }
 
   h2 {
     font-family: 'Trade-Gothic';
-    font-size: 2rem;
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 4rem;
   }
 
   .link {
