@@ -109,7 +109,7 @@ const ExhibitionTemplate = (props) => {
 
 export default ExhibitionTemplate
 
-export const query = graphql`
+export const exhibitionTemplateQuery = graphql`
   query($slug: String!){
     site {
       siteMetadata {
@@ -150,7 +150,6 @@ export const query = graphql`
               }
             }
             header
-            optional_artist
             press_release {
               source_url
             }
