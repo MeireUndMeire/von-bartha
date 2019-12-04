@@ -86,12 +86,14 @@ const GlobalStyle = createGlobalStyle`
     text-transform: capitalize;
   }
 
-  .link {
+  .navLink {
     font-family: 'Trade-Gothic';
-    font-size: 2rem;
+    font-size: 3rem;
+    line-height: 3rem;
     color: #1D1D1B;
     text-decoration: none;
     box-shadow: none;
+    text-transform: uppercase;
   }
 
   .date-small {
