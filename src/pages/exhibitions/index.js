@@ -9,7 +9,9 @@ const Header = styled.h1`
 `
 
 const OnViewWrapper = styled.div`
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
 `
 
@@ -18,29 +20,23 @@ const Heading = styled.div`
     margin: 40px 0 20px;
 `
 
+//48.5% for each element + 1% margin-left + document margin 1% left & right makes 100%
 const ExhibitionItem = styled.div`
-    width: 48vw;
-    display: inline-block;
-    padding-bottom: 50px;
-    &:nth-child(2){
-        padding-left: 1.5vw;
-    }
     .date-small {
         margin: 0;
     }
 `
 
 const Back = styled.div`
-    width: 100%;
-    margin: 30px 0 80px;
+
 `
 
 
 const ExhibitionsPage = (props) => {
     const allExhibitions = props.data.allWordpressWpExhibitions.edges
 
-    const currentDate = props.data.site.buildTime
-    console.log(currentDate)
+    const currentDate = props.data.site.buildTime //works
+
 
     return (
 
@@ -51,7 +47,7 @@ const ExhibitionsPage = (props) => {
             <Heading><h1>on view</h1></Heading>
             <OnViewWrapper className="OnViewWrapper">
             {allExhibitions.map(exhibition => (
-                     <ExhibitionItem className="exhibitionItem" key={exhibition.node.id}>
+                     <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
                        
                                 <p className="date-small">Until {exhibition.node.acf.starting_date}</p>
                                 <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
@@ -68,8 +64,9 @@ const ExhibitionsPage = (props) => {
             <Heading><h1>soon</h1></Heading>
             <OnViewWrapper className="OnViewWrapper">
             {allExhibitions.map(exhibition => (
-                     <ExhibitionItem className="exhibitionItem" key={exhibition.node.id}>
-                       
+                     <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
+                                
+                                {/* {exhibition.node.acf.starting_date ? 'undefined' : 'not'} */}
                                 <p className="date-small">{exhibition.node.acf.starting_date}</p>
                                 <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
                                 <Link className="link" to={exhibition.node.path}>
@@ -86,7 +83,7 @@ const ExhibitionsPage = (props) => {
             <Heading><h1>past</h1></Heading>
             <OnViewWrapper className="OnViewWrapper">
             {allExhibitions.map(exhibition => (
-                     <ExhibitionItem className="exhibitionItem" key={exhibition.node.id}>
+                     <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
                        
                                 <p className="date-small">{exhibition.node.acf.starting_date}</p>
                                 <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
@@ -100,7 +97,7 @@ const ExhibitionsPage = (props) => {
             </OnViewWrapper>
             
             <Back>
-                <Link to="/" className="link"><h1>Back</h1></Link>
+                <Link to="/" className="backLink"><h2>&#8592; Back</h2></Link>
             </Back>
         </Layout>
     )
@@ -116,20 +113,20 @@ export const exhibitionsQuery = graphql`
 
     allWordpressWpExhibitions {
         edges {
-          node {
-            id
-            title
-            path
-            acf {
-              fullwidth_image {
-                source_url
+            node {
+                id
                 title
-              }
-              starting_date(formatString: "MMM DD YYYY")
-              ending_date
-              exhibition_subtitle
+                path
+                acf {
+                fullwidth_image {
+                    source_url
+                    title
+                }
+                starting_date(formatString: "MMM DD YYYY")
+                ending_date
+                exhibition_subtitle
+                }
             }
-          }
         }
     }
 }
