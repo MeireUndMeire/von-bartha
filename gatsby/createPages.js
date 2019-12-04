@@ -8,6 +8,7 @@ module.exports = async ({ actions, graphql }) => {
     `
   {
     site {
+      buildTime(formatString: "YYYYMMDD")
       siteMetadata {
         siteUrl
       }
@@ -25,16 +26,26 @@ module.exports = async ({ actions, graphql }) => {
         }
       }
     }
-    allWordpressWpExhibitions(sort: {fields: [date]}) {
+    allWordpressWpExhibitions {
       edges {
         node {
           path
           id
           slug
           title
-          acf {
-            exhibition_subtitle
+          fields {
+            deploy
           }
+        }
+      }
+    }
+    allWordpressWpArtists {
+      edges {
+        node {
+          id
+          slug
+          title
+          path
           fields {
             deploy
           }
@@ -53,15 +64,13 @@ module.exports = async ({ actions, graphql }) => {
     const {
       allWordpressPage,
       allWordpressWpExhibitions,
+      allWordpressWpArtists,
     } = result.data;
 
     // all templates
     const pageTemplate = path.resolve(`./src/templates/page.js`);
     const exhibitionTemplate = path.resolve(`./src/templates/exhibition.js`);
-
-
-    // create pagePrefix
-    const { pagePrefix } = result.data.site.siteMetadata.siteUrl;
+    const artistTemplate = path.resolve(`./src/templates/artist.js`);
 
 
     // create page for pages
@@ -77,7 +86,7 @@ module.exports = async ({ actions, graphql }) => {
       }
     })
     
-    // create page for exhibitions
+    // create page per exhibition
     allWordpressWpExhibitions.edges.forEach( edge => {
       if (edge.node.fields.deploy) {
         createPage({
@@ -85,7 +94,21 @@ module.exports = async ({ actions, graphql }) => {
           component: exhibitionTemplate,
           context: {
             id: edge.node.id,
-            slug: edge.node.slug
+            slug: edge.node.slug 
+          }
+        })        
+      }
+    })
+
+    // create page per artist
+    allWordpressWpArtists.edges.forEach( edge => {
+      if (edge.node.fields.deploy) {
+        createPage({
+          path: edge.node.path,
+          component: artistTemplate,
+          context: {
+            id: edge.node.id,
+            slug: edge.node.slug 
           }
         })        
       }
