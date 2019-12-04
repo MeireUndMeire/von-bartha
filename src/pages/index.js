@@ -4,12 +4,14 @@ import { graphql } from "gatsby"
 import Layout from '../components/layout';
 
 import ExhibitionsModule from "../components/LandingModules/Exhibitions/ExhibitionsModule"
+import ArtistsModule from "../components/LandingModules/Artists/ArtistsModule"
 
 
 const Landing = (props) => {
   
-  const site = props.data.site.siteMetadata;
   const allModules = props.data.allWordpressPage.edges;
+
+  const exhibitions = props.data.allWordpressWpExhibitions
 
   return (
   <Layout>
@@ -26,9 +28,11 @@ const Landing = (props) => {
                   case "WordPressAcf_exhibitions_module":
                   return <ExhibitionsModule key={index}/>
                     break;
-                    
-                  //add other modules here
 
+                  case "WordPressAcf_artists_module":
+                  return <ArtistsModule key={index}/>
+                    break;
+                    
                   default:
                     break;
                 }
@@ -47,12 +51,6 @@ export default Landing
 
 export const pageQuery = graphql`
   {
-    site {
-      siteMetadata {
-        title
-        siteUrl
-      }
-    }
     allWordpressPage(filter: {template: {eq: "template-landing.php"}}) {
       edges {
         node {
@@ -64,6 +62,22 @@ export const pageQuery = graphql`
             modules_page {
               __typename
             }
+          }
+        }
+      }
+    }
+    allWordpressWpExhibitions {
+      edges {
+        node {
+          id
+          title
+          acf {
+            fullwidth_image {
+              source_url
+              title
+            }
+            starting_date
+            ending_date
           }
         }
       }
