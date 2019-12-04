@@ -4,25 +4,9 @@ import GlobalStyle from '../components/GlobalStyle'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-const PageWrapper = styled.div`
-  width: 100vw;
-  height: auto;
-  background-color: #FFF;
-  color: #1D1D1B;
-  text-transform: uppercase;
-`
-
-const Nav = styled.div`
+const NavExtended = styled.div`
   width: 100%;
   height: 100%;
-  text-transform: uppercase;
-  margin-bottom: 60px;
-`
-
-const Title = styled.div`
-  font-family: 'Trade-Gothic';
-  font-size: 2rem;
-  margin: 0 auto;
 `
 
 const Subtitle = styled.div`
@@ -33,18 +17,17 @@ const Subtitle = styled.div`
 `
 
 const StyledNavItems = styled(Link)`
+  :not(:first-child) {
+    margin-left: 20px;
+  }
   &.active {
     text-decoration: underline;
   }
 `
 
-const StyledNav = styled(Link)`
-
-`
-
-const NavBlock = styled.div`
-  width: fit-content;
-  margin: 0 auto;
+const NavHome= styled.div`
+  display: flex;
+  justify-content: space-between;
 `
 
 const Footer = styled.footer`
@@ -61,17 +44,30 @@ export default ({ children }) => (
       <div className="layout">
         <GlobalFonts />
         <GlobalStyle />
-        <Nav>
+        <NavExtended>
+          {/* exhibitions */}
           <StyledNavItems
             activeClassName="active" 
             to="/exhibitions"
-            className="link">Exhibitions
+            className="navLink">Exhibitions
           </StyledNavItems>
-          <NavBlock>
-            <StyledNav to="/" className="link">Von Bartha</StyledNav>
+
+          {/* artists */}
+          <StyledNavItems
+            activeClassName="active" 
+            to="/artists"
+            className="navLink">Artists
+          </StyledNavItems>
+        </NavExtended>
+
+        <NavHome>
+          <div></div>
+          <div className="home">
+            <Link to="/" className="navLink home">Von Bartha</Link>
             <Subtitle>EST. 1970</Subtitle>
-          </NavBlock>
-        </Nav>
+          </div>
+          <div></div>
+        </NavHome>
         <div className="pageContent">{children}</div>
       </div>
       <Footer>This is the footer</Footer>
