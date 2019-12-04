@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     overflow-x: hidden;
+    width: 100vw;
   }
 
   html, body, div, span, applet, object, iframe,
@@ -37,22 +38,36 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .layout {
-    width: 98vw
-    margin: 0 1vw;
+    width: 100%;
+    margin: 0 1%;
     .fullWidth {
       width: 100vw;
-      margin-left: -1vw;
+      margin-left: -1%;
+    }
+  }
+
+  .two-grid-item {
+    width: 48.5%;
+    padding-bottom: 50px;
+    &:nth-child(even){
+        margin-left: 1%;
     }
   }
   
   p {
     font-family: 'Sabon';
     font-size: 1rem;
-    margin-bottom: .8rem;
+    margin-bottom: 1rem;
   }
 
   img {
     width: 100%;
+  }
+
+  .backLink {
+    display: inline-block;
+    width: 100%;
+    margin: 10px 0 80px;
   }
 
   h1 {
@@ -68,6 +83,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 4rem;
     font-weight: 400;
     line-height: 4rem;
+    text-transform: capitalize;
   }
 
   .link {
