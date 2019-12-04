@@ -3,15 +3,17 @@ import React from "react"
 import { graphql } from "gatsby"
 
 const ExhibitionsModule = (props) => {
-  console.log(props)
+
+  const exhibitionModule = props.node
+  
   return (
     <div>
-      Yes
+      Exhibition module
     </div>
   )
 }
 
-export const exhibitionsModuleQuery = graphql`
+export const query = graphql`
 {
   allWordpressWpExhibitions {
     edges {
