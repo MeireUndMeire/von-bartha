@@ -14,12 +14,10 @@ const Gallery = styled.div`
   overflow-x: scroll;
 
   #slide0 {
-    margin-left: 50vw;
-    transform: translateX(-50%);
+    margin-left: 33.3vw;
   }
 
   .slide {
-    transform: translateX(-50%);
     padding-left: 40px;
     margin-left: 0;
     img {
@@ -28,12 +26,13 @@ const Gallery = styled.div`
       object-fit: contain;
     }
   }
-  .bold > p {
+  .caption > p {
     font-family: 'Trade-Gothic';
     font-size: 1rem;
-    line-height: .5rem;
+    line-height: 1rem;
+    margin-bottom: 5px;
   }
-  .bold {
+  .caption {
     padding: 10px 0 0 70px;
   }
 `
@@ -66,9 +65,6 @@ const ExhibitionTemplate = (props) => {
 
   const exhibition = props.data.allWordpressWpExhibitions.edges[0].node
   const slides = exhibition.acf.gallery_module_exhibitions[0].slides
-
-  console.log(slides[0])
-
   
   return (
     <Layout>
@@ -78,15 +74,22 @@ const ExhibitionTemplate = (props) => {
         <img className="fullWidth" alt={exhibition.acf.fullwidth_image.title} src={exhibition.acf.fullwidth_image.source_url} />
         <h2>{exhibition.acf.starting_date} - {exhibition.acf.ending_date}</h2>
         <h2>{exhibition.acf.exhibition_location}</h2>
-        <Textblock><div dangerouslySetInnerHTML={{ __html: exhibition.acf.textblock }}></div></Textblock>
+        
+        {exhibition.acf.textblock =! null &&
+          <Textblock><div dangerouslySetInnerHTML={{ __html: exhibition.acf.textblock }}></div></Textblock>
+        }
+        
+        {slides > "0"  &&
         <Gallery className="slides fullWidth">
             {slides.map((slide, index) => (
                 <div className="slide" key={index} id={'slide' + index}>
                   <img src={slide.image.source_url} alt={slide.image.title} />
-                  <div className="bold" dangerouslySetInnerHTML={{ __html: slide.caption }}></div>
+                  <div className="caption" dangerouslySetInnerHTML={{ __html: slide.caption }}></div>
                 </div>
             ))}
         </Gallery>
+        } 
+
         <Linkss className="fullWidth">
               {exhibition.acf.artist_name.post_name =! 'undefined' &&
                 <div className="artistProfile" >
@@ -94,9 +97,10 @@ const ExhibitionTemplate = (props) => {
                 </div>  
               }
               <div className="pressRelease">
-                <a href={exhibition.acf.press_release.source_url} download target="_blank"><h2>Press Release</h2></a>
+                <a href={exhibition.acf.press_release.source_url} download target="_blank" rel="noopener noreferrer"><h2>Press Release</h2></a>
               </div>
         </Linkss>
+        <Link className="backLink" to="/exhibitions"><h2>&#8592; all exhibitions</h2></Link>
       </div>
     </Layout>
   )
