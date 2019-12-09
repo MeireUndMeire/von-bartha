@@ -58,7 +58,7 @@ const ExhibitionTemplate = (props) => {
           <Textblock className="detailTextblock"><div dangerouslySetInnerHTML={{ __html: exhibition.acf.textblock }}></div></Textblock>
         }
         
-        {exhibition.acf.gallery_module_exhibitions.slides != null  &&
+        {exhibition.acf.gallery_module_exhibitions != null  &&
         <Gallery className="slides fullWidth detailGallery">
             {exhibition.acf.gallery_module_exhibitions[0].slides.map((slide, index) => (
                 <div className="slide" key={index} id={'slide' + index}>
