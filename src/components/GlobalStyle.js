@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     overflow-x: hidden;
     width: 100vw;
+    color: #1D1D1B;
   }
 
   html, body, div, span, applet, object, iframe,
@@ -38,25 +39,111 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .layout {
-    width: 100%;
-    margin: 0 1%;
+    @media only screen and (max-width: 767px) {
+      padding: 0 2%
+    }
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0 1%;
+
     .fullWidth {
       width: 100vw;
       margin-left: -1%;
+      @media only screen and (max-width: 767px) {
+        margin-left: -2%;
+      }
     }
   }
 
+  .detailHeading {
+    margin: 10px 0;
+    background-color: #FFF;
+  }
+
+  .overviewHeading {
+    margin: 5.714vw 0;
+  }
+
   .two-grid-item {
-    width: 48.5%;
-    padding-bottom: 50px;
-    &:nth-child(even){
-        margin-left: 1%;
+    @media only screen and (max-width: 767px) {
+      width: 100%;
+      padding-bottom: 5.714vw;
+      &:nth-child(even){
+        padding-left: 0;
+      }
+    }
+    width: 49.5%;
+    padding-bottom: 5.714vw;
+    @media only screen and (min-width: 768px) {
+      &:nth-child(even){
+        padding-left: 1%;
+      }
+    }
+
+    img {
+      height: 40vh;
+      object-fit: cover;
+    }
+  }
+
+  .linkBlocks {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    @media only screen and (max-width: 767px) {
+      flex-direction: column;
+    }
+    .linkBlock {
+      @media only screen and (max-width: 767px) {
+        width: 100%; 
+        height: 80px; 
+      }
+      width: fill-available;
+      height: 150px;
+    }
+  }
+
+  .detailGallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-direction: flex-start;
+    width: auto;
+    margin: 50px 0;
+    overflow-x: scroll;
+
+    #slide0 {
+      @media only screen and (max-width: 767px) {
+        margin-left: 0;
+      }
+      margin-left: 33.3vw;
+    }
+
+    .slide {
+      padding-left: 40px;
+      margin-left: 0;
+      img {
+        width: auto;
+        height: 50vh;
+        object-fit: contain;
+      }
+    }
+    .caption > p {
+      font-family: 'Trade-Gothic';
+      font-size: 1rem;
+      line-height: 1rem;
+      margin-bottom: 5px;
+    }
+    .caption {
+      padding: 10px 0 0 70px;
     }
   }
   
   p {
     font-family: 'Sabon';
-    font-size: 1rem;
+    font-size: 22px;
+    letter-spacing: 0;
+    line-height: 30px;
     margin-bottom: 1rem;
   }
 
@@ -66,27 +153,52 @@ const GlobalStyle = createGlobalStyle`
 
   .backLink {
     display: inline-block;
-    width: 100%;
+    width: fit-content;
     margin: 10px 0 80px;
+    @media only screen and (max-width: 768px) {
+      margin: 10px 0 40px;
+    }
+  }
+
+  .detailTextblock {
+    @media only screen and (max-width: 767px) {
+    width: 75%;
+    margin: 40px 20% 40px;
+    }
+    width: 55%;
+    max-width: 820px;
+    margin: 80px auto;
   }
 
   h1 {
+    ${'' /* @media only screen and (max-width: 767px) {
+      font-size: 2rem;
+      line-height: 2rem;
+    } */}
     font-family: 'Trade-Gothic';
-    font-size: 4rem;
+    font-size: 5.714vw;
     font-weight: 400;
     text-transform: uppercase;
-    line-height: 4rem;
+    line-height: 5.714vw;
   }
 
   h2 {
+    ${'' /* @media only screen and (max-width: 767px) {
+      font-size: 2rem;
+      line-height: 2rem;
+    } */}
     font-family: 'Trade-Gothic';
-    font-size: 4rem;
+    font-size: 5.714vw;
     font-weight: 400;
-    line-height: 4rem;
+    line-height: 5.714vw;
     text-transform: capitalize;
   }
 
   .navLink {
+    @media only screen and (max-width: 767px) {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
     font-family: 'Trade-Gothic';
     font-size: 3rem;
     line-height: 3rem;
@@ -97,6 +209,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .date-small {
+    margin-bottom: 5px;
     font-family: 'Trade-Gothic';
     font-size: 10px;
     text-transform: uppercase;
