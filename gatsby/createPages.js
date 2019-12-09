@@ -55,7 +55,6 @@ module.exports = async ({ actions, graphql }) => {
   }
   `
   ).then(result => {
-    console.log(JSON.stringify(result, null, 4))
     if (result.errors) {
       throw result.errors
     }
