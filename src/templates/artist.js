@@ -4,19 +4,16 @@ import styled from 'styled-components'
 
 import Layout from "../components/layout"
 
+const Gallery = styled.div`
+`
+
 const Linkss = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
+  
   .cv {
-    width: 50%;
-    height: 150px;
     background-color: #B2BFC8;
   }
   .artistWebsite {
-    width: 50%;
     background-color: #D1FFC3;
-    height: 150px;
   }
   h2 {
     padding: 10px;
@@ -24,13 +21,15 @@ const Linkss = styled.div`
 `
 
 const Textblock = styled.div`
-  width: 60vw;
-  margin: 80px auto;
+
 `
 
 const artistTemplate = (props) => {
 
   const artist = props.data.allWordpressWpArtists.edges[0].node
+  const exhibition = props.data.allWordpressWpExhibitions
+
+  console.log(exhibition)
   
   return (
     <Layout>
@@ -39,19 +38,30 @@ const artistTemplate = (props) => {
         <h1>{artist.title}</h1>
         
         {artist.acf.textblock =! null &&
-          <Textblock><div dangerouslySetInnerHTML={{ __html: artist.acf.textblock }}></div></Textblock>
+          <Textblock className="detailTextblock"><div dangerouslySetInnerHTML={{ __html: artist.acf.textblock }}></div></Textblock>
         }
 
-        <Linkss className="fullWidth">
+        {artist.acf.gallery_module_artists != null  &&
+        <Gallery className="slides fullWidth detailGallery">
+            {artist.acf.gallery_module_artists[0].slides.map((slide, index) => (
+                <div className="slide" key={index} id={'slide' + index}>
+                  <img src={slide.image.source_url} alt={slide.image.title} />
+                  <div className="caption" dangerouslySetInnerHTML={{ __html: slide.caption }}></div>
+                </div>
+            ))}
+        </Gallery>
+        } 
+
+        <Linkss className="fullWidth linkBlocks" >
 
               {artist.acf.cv ==! false &&
-              <div className="cv">
+              <div className="cv linkBlock">
                 <a href={artist.acf.cv.source_url} download target="_blank" rel="noopener noreferrer"><h2>CV</h2></a>
               </div>
               }
 
               {artist.acf.artist_website =! '' &&
-                <div className="artistWebsite">
+                <div className="artistWebsite linkBlock">
                   <a href={`${artist.acf.artist_website}`} target="_blank" rel="noopener noreferrer"><h2>artists website</h2></a>
                 </div>  
               }
@@ -74,7 +84,7 @@ export const query = graphql`
         title
       }
     }
-    allWordpressWpArtists(filter: {slug: { eq: $slug}}) {
+    allWordpressWpArtists(filter: {slug: { eq: "superflex"}}) {
       edges {
         node {
           id
@@ -92,6 +102,26 @@ export const query = graphql`
               source_url
             }
             textblock
+            gallery_module_artists {
+              slides {
+                id
+                image {
+                  title
+                  source_url
+                }
+                caption
+              }
+            }
+          }
+        }
+      }
+    }
+    allWordpressWpExhibitions(filter: {slug: { eq: $slug}}) {
+      edges {
+        node {
+          slug
+          acf {
+            ...AcfExhibition
           }
         }
       }
