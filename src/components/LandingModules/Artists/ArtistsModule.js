@@ -6,7 +6,6 @@ const ArtistsModule = (props) => {
 
   const artistModule = props.node
 
-  console.log(artistModule)
   return (
     <div>
       Artist Module
