@@ -6,6 +6,7 @@ import styled from "styled-components"
 
 const Header = styled.h1`
     text-align: left;
+    margin-bottom: 40px;
 `
 
 const OnViewWrapper = styled.div`
@@ -17,14 +18,10 @@ const OnViewWrapper = styled.div`
 
 const Heading = styled.div`
     text-align: center;
-    margin: 40px 0 20px;
 `
 
-//48.5% for each element + 1% margin-left + document margin 1% left & right makes 100%
 const ExhibitionItem = styled.div`
-    .date-small {
-        margin: 0;
-    }
+
 `
 
 const Back = styled.div`
@@ -44,7 +41,7 @@ const ExhibitionsPage = (props) => {
             <Header>Exhibitions</Header>
 
             {/* on view */}
-            <Heading><h1>on view</h1></Heading>
+            <Heading className="overviewHeading"><h1>on view</h1></Heading>
             <OnViewWrapper className="OnViewWrapper">
             {allExhibitions.map(exhibition => (
                      <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
@@ -61,7 +58,7 @@ const ExhibitionsPage = (props) => {
             </OnViewWrapper>
 
             {/* soon */}
-            <Heading><h1>soon</h1></Heading>
+            <Heading className="overviewHeading"><h1>soon</h1></Heading>
             <OnViewWrapper className="OnViewWrapper">
             {allExhibitions.map(exhibition => (
                      <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
@@ -80,19 +77,17 @@ const ExhibitionsPage = (props) => {
             
 
             {/* past */}
-            <Heading><h1>past</h1></Heading>
+            <Heading className="overviewHeading"><h1>past</h1></Heading>
             <OnViewWrapper className="OnViewWrapper">
             {allExhibitions.map(exhibition => (
-                     <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
-                       
-                                <p className="date-small">{exhibition.node.acf.starting_date}</p>
-                                <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
-                                <Link className="link" to={exhibition.node.path}>
-                                    <h1>{exhibition.node.title}</h1>
-                                    <h2>{exhibition.node.exhibition_subtitle}</h2>
-                                </Link>
-                            
-                    </ExhibitionItem>
+                <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
+                    <Link className="link" to={exhibition.node.path}>
+                        <p className="date-small">{exhibition.node.acf.starting_date}</p>
+                        <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
+                        <h1>{exhibition.node.title}</h1>
+                        <h2>{exhibition.node.exhibition_subtitle}</h2>
+                    </Link> 
+                </ExhibitionItem>
             ))}
             </OnViewWrapper>
             
