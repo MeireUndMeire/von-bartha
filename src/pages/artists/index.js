@@ -17,7 +17,6 @@ const OnViewWrapper = styled.div`
 
 const Heading = styled.div`
     text-align: left;
-    margin: 40px 0 20px;
 `
 
 //48.5% for each element + 1% margin-left + document margin 1% left & right makes 100%
@@ -42,18 +41,18 @@ const ArtistsPage = (props) => {
 
         <Layout>
 
-            <Heading><h1>Artists</h1></Heading>
+            <Heading className="overviewHeading"><h1>Artists</h1></Heading>
             <OnViewWrapper className="OnViewWrapper">
             {allArtists.map(artist => (
-                     <ArtistItem className="two-grid-item" key={artist.node.id}>
-                       
-                                <img alt={artist.node.acf.fullwidth_image.title} src={artist.node.acf.fullwidth_image.source_url} />
-                                <Link className="link" to={artist.node.path}>
-                                    <h1>{artist.node.title}</h1>
-                                    <h2>{artist.node.artist_subtitle}</h2>
-                                </Link>
-                            
-                    </ArtistItem>
+                <ArtistItem className="two-grid-item" key={artist.node.id}>
+                        <Link className="link" to={artist.node.path}>
+                            <img alt={artist.node.acf.fullwidth_image.title} src={artist.node.acf.fullwidth_image.source_url} />
+                            <div className="detailHeading">
+                                <h1>{artist.node.title}</h1>
+                                <h2>{artist.node.artist_subtitle}</h2>
+                            </div>
+                        </Link>           
+                </ArtistItem>
             ))}
             </OnViewWrapper>
             
