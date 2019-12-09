@@ -25,7 +25,7 @@ const PublicationItem = styled.div`
     }
     .imageWrapper {
         position: relative;
-        background-size: 40%;
+        background-size: auto 80%;
         background-position: center;
         background-repeat: no-repeat;
         height: 40vh;
