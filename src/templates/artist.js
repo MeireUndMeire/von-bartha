@@ -84,7 +84,7 @@ export const query = graphql`
         title
       }
     }
-    allWordpressWpArtists(filter: {slug: { eq: "superflex"}}) {
+    allWordpressWpArtists(filter: {slug: { eq: $slug}}) {
       edges {
         node {
           id
