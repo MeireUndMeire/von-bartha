@@ -41,7 +41,7 @@ const artistTemplate = (props) => {
           <Textblock className="detailTextblock"><div dangerouslySetInnerHTML={{ __html: artist.acf.textblock }}></div></Textblock>
         }
 
-        {artist.acf.gallery_module_artists != null  &&
+        {artist.acf.gallery_module_artists.slides != null  &&
         <Gallery className="slides fullWidth detailGallery">
             {artist.acf.gallery_module_artists[0].slides.map((slide, index) => (
                 <div className="slide" key={index} id={'slide' + index}>
