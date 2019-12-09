@@ -5,8 +5,12 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 
 const NavExtended = styled.div`
-  width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-direction: flex-start;
+  width: auto;
 `
 
 const Subtitle = styled.div`
@@ -28,6 +32,8 @@ const StyledNavItems = styled(Link)`
 const NavHome= styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: calc(5.714vw * 2);
+
 `
 
 const Footer = styled.footer`
@@ -44,20 +50,30 @@ export default ({ children }) => (
       <div className="layout">
         <GlobalFonts />
         <GlobalStyle />
-        <NavExtended>
-          {/* exhibitions */}
-          <StyledNavItems
-            activeClassName="active" 
-            to="/exhibitions"
-            className="navLink">Exhibitions
-          </StyledNavItems>
+  
+        <NavExtended className="fullWidth">
+          <div className="navExtendedWrapper">
+            {/* exhibitions */}
+            <StyledNavItems
+              activeClassName="active" 
+              to="/exhibitions"
+              className="navLink">Exhibitions
+            </StyledNavItems>
 
-          {/* artists */}
-          <StyledNavItems
-            activeClassName="active" 
-            to="/artists"
-            className="navLink">Artists
-          </StyledNavItems>
+            {/* artists */}
+            <StyledNavItems
+              activeClassName="active" 
+              to="/artists"
+              className="navLink">Artists
+            </StyledNavItems>
+
+            {/* Publications */}
+            <StyledNavItems
+              activeClassName="active" 
+              to="/publications"
+              className="navLink">Publications
+            </StyledNavItems>
+          </div>
         </NavExtended>
 
         <NavHome>
