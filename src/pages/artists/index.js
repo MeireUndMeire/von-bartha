@@ -34,9 +34,6 @@ const Back = styled.div`
 const ArtistsPage = (props) => {
     const allArtists = props.data.allWordpressWpArtists.edges
 
-    const currentDate = props.data.site.buildTime //works
-
-
     return (
 
         <Layout>
@@ -47,10 +44,8 @@ const ArtistsPage = (props) => {
                 <ArtistItem className="two-grid-item" key={artist.node.id}>
                         <Link className="link" to={artist.node.path}>
                             <img alt={artist.node.acf.fullwidth_image.title} src={artist.node.acf.fullwidth_image.source_url} />
-                            <div className="detailHeading">
-                                <h1>{artist.node.title}</h1>
-                                <h2>{artist.node.artist_subtitle}</h2>
-                            </div>
+                            <h1>{artist.node.title}</h1>
+                            <h2>{artist.node.artist_subtitle}</h2>
                         </Link>           
                 </ArtistItem>
             ))}
@@ -67,10 +62,6 @@ export default ArtistsPage
 
 export const artistsQuery = graphql`
 {
-    site {
-        buildTime
-    }
-
     allWordpressWpArtists {
         edges {
             node {

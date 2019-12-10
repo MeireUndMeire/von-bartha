@@ -77,7 +77,7 @@ const PublicationsPage = (props) => {
 
         <Layout>
 
-            <Heading><h1>Publications</h1></Heading>
+            <Heading className="overviewHeading"><h1>Publications</h1></Heading>
             <PublicationWrapper className="OnViewWrapper">
                 
 
@@ -87,13 +87,13 @@ const PublicationsPage = (props) => {
                             case "Artist's Book":
                             return ( 
                                 <PublicationItem className="two-grid-item" key={index}>
-                                    <div className="imageWrapper" style={{backgroundColor: publication.node.acf.custom_color === false ? publication.node.acf.color_scheme : publication.node.acf.background_color, 
-                                                                          backgroundImage: `url(${publication.node.acf.artists_book_image.source_url})`}} >
-                                        <div className="textWrapper"><h2>{`To purchase this publication please email ${publication.node.acf.email === null ? "info@vonbartha.com" : publication.node.acf.email}`}</h2></div>
-                                    </div>
-                                    <div className="detailHeading">
+                                    <a href={`mailto: ${publication.node.acf.email === null ? "info@vonbartha.com" : publication.node.acf.email}`}>
+                                        <div className="imageWrapper" style={{backgroundColor: publication.node.acf.custom_color === false ? publication.node.acf.color_scheme : publication.node.acf.background_color, 
+                                                                            backgroundImage: `url(${publication.node.acf.artists_book_image.source_url})`}} >
+                                            <div className="textWrapper"><h2>{`To purchase this publication please email ${publication.node.acf.email === null ? "info@vonbartha.com" : publication.node.acf.email}`}</h2></div>
+                                        </div>
                                         <h1>{publication.node.acf.artists_book_name}</h1>
-                                    </div>
+                                    </a>
                                 </PublicationItem>)
                                 break;
 
@@ -101,13 +101,13 @@ const PublicationsPage = (props) => {
                             case "Report":
                             return (
                                 <PublicationItem className="two-grid-item" key={index}>
-                                    <div className="imageWrapper" style={{backgroundColor: publication.node.acf.custom_color === false ? publication.node.acf.color_scheme : publication.node.acf.background_color,
-                                                                          backgroundImage: `url(${publication.node.acf.report_image.source_url})`}}>
-                                        <div className="textWrapper"><h2>Download PDF</h2></div>
-                                    </div>
-                                    <div className="detailHeading">
+                                    <a href={publication.node.acf.report_image.source_url} download target="_blank" rel="noopener noreferrer">
+                                        <div className="imageWrapper" style={{backgroundColor: publication.node.acf.custom_color === false ? publication.node.acf.color_scheme : publication.node.acf.background_color,
+                                                                            backgroundImage: `url(${publication.node.acf.report_image.source_url})`}}>
+                                            <div className="textWrapper"><h2>Download PDF</h2></div>
+                                        </div>
                                         <h1>{publication.node.acf.report_title}</h1>
-                                    </div>
+                                    </a>
                                 </PublicationItem>
                             )
                                 break;

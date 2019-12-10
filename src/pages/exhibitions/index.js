@@ -45,10 +45,9 @@ const ExhibitionsPage = (props) => {
             <OnViewWrapper className="OnViewWrapper">
             {allExhibitions.map(exhibition => (
                      <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
-                       
-                                <p className="date-small">Until {exhibition.node.acf.starting_date}</p>
-                                <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
                                 <Link className="link" to={exhibition.node.path}>
+                                    <p className="date-small">Until {exhibition.node.acf.starting_date}</p>
+                                    <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
                                     <h1>{exhibition.node.title}</h1>
                                     <h2>{exhibition.node.exhibition_subtitle}</h2>
                                 </Link>
@@ -64,9 +63,9 @@ const ExhibitionsPage = (props) => {
                      <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
                                 
                                 {/* {exhibition.node.acf.starting_date ? 'undefined' : 'not'} */}
-                                <p className="date-small">{exhibition.node.acf.starting_date}</p>
-                                <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
                                 <Link className="link" to={exhibition.node.path}>
+                                    <p className="date-small">{exhibition.node.acf.starting_date}</p>
+                                    <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
                                     <h1>{exhibition.node.title}</h1>
                                     <h2>{exhibition.node.exhibition_subtitle}</h2>
                                 </Link>
