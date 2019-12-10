@@ -32,8 +32,7 @@ const StyledNavItems = styled(Link)`
 const NavHome= styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: calc(5.714vw * 2);
-
+  margin-bottom: 5.714vw;
 `
 
 const Footer = styled.footer`
@@ -73,6 +72,14 @@ export default ({ children }) => (
               to="/publications"
               className="navLink">Publications
             </StyledNavItems>
+
+            {/* Agenda */}
+            <StyledNavItems
+              activeClassName="active" 
+              to="/agenda"
+              className="navLink">Agenda
+            </StyledNavItems>
+
           </div>
         </NavExtended>
 
