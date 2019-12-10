@@ -2,7 +2,6 @@ import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
   ::selection {
-    background-color: #FFF;
     color: #1D1D1B;
   }
   html {
@@ -48,6 +47,8 @@ const GlobalStyle = createGlobalStyle`
 
     .fullWidth {
       width: 100vw;
+      max-height: 70vh;
+      object-fit: cover;
       margin-left: -1%;
       @media only screen and (max-width: 767px) {
         margin-left: -2%;
@@ -56,8 +57,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .detailHeading {
-    margin: 10px 0;
-    background-color: #FFF;
+    padding: 5.714vw 0 10px;
   }
 
   .overviewHeading {
@@ -109,7 +109,7 @@ const GlobalStyle = createGlobalStyle`
     flex-wrap: nowrap;
     flex-direction: flex-start;
     width: auto;
-    margin: 50px 0;
+    padding: 50px 0;
     overflow-x: scroll;
 
     #slide0 {
