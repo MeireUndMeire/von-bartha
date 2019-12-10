@@ -52,6 +52,19 @@ module.exports = async ({ actions, graphql }) => {
         }
       }
     }
+    allWordpressWpEvents {
+      edges {
+        node {
+          id
+          slug
+          title
+          path
+          fields {
+            deploy
+          }
+        }
+      }
+    }
   }
   `
   ).then(result => {
@@ -64,12 +77,14 @@ module.exports = async ({ actions, graphql }) => {
       allWordpressPage,
       allWordpressWpExhibitions,
       allWordpressWpArtists,
+      allWordpressWpEvents,
     } = result.data;
 
     // all templates
     const pageTemplate = path.resolve(`./src/templates/page.js`);
     const exhibitionTemplate = path.resolve(`./src/templates/exhibition.js`);
     const artistTemplate = path.resolve(`./src/templates/artist.js`);
+    const eventTemplate = path.resolve(`./src/templates/event.js`);
 
 
     // create page for pages
@@ -105,6 +120,20 @@ module.exports = async ({ actions, graphql }) => {
         createPage({
           path: edge.node.path,
           component: artistTemplate,
+          context: {
+            id: edge.node.id,
+            slug: edge.node.slug 
+          }
+        })        
+      }
+    })
+
+    // create page per event
+    allWordpressWpEvents.edges.forEach( edge => {
+      if (edge.node.fields.deploy) {
+        createPage({
+          path: edge.node.path,
+          component: eventTemplate,
           context: {
             id: edge.node.id,
             slug: edge.node.slug 
