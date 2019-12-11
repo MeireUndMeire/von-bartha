@@ -69,10 +69,10 @@ export default () => (
             <a href={`${data.wordpressAcfOptions.options.instagram}`} target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
           {data.wordpressAcfOptions.options.locations.map((location, index) => (
-            <location className="table-item" key={index}>
+            <Location className="table-item" key={index}>
               <div>{location.address}</div>
               <div>{location.location_name}</div>
-            </location>
+            </Location>
           ))}
           <div className="table-item"></div>
           <div className="table-item"></div>
