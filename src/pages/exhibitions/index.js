@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import moment from 'moment'
 
 import Layout from '../../components/layout';
 import styled from "styled-components"
@@ -31,9 +32,10 @@ const Back = styled.div`
 
 const ExhibitionsPage = (props) => {
     const allExhibitions = props.data.allWordpressWpExhibitions.edges
+    let today = moment(new Date()).format('YYYYMMDD');
 
-    const currentDate = props.data.site.buildTime //works
 
+    // .acf.endingDateDifferenceFromPresent, .acf.startingDateDifferenceFromPresent
 
     return (
 
@@ -43,51 +45,69 @@ const ExhibitionsPage = (props) => {
             {/* on view */}
             <Heading className="overviewHeading"><h1>on view</h1></Heading>
             <OnViewWrapper className="OnViewWrapper">
-            {allExhibitions.map(exhibition => (
-                     <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
-                                <Link className="link" to={exhibition.node.path}>
-                                    <p className="date-small">Until {exhibition.node.acf.starting_date}</p>
-                                    <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
-                                    <h1>{exhibition.node.title}</h1>
-                                    <h2>{exhibition.node.exhibition_subtitle}</h2>
-                                </Link>
-                            
-                    </ExhibitionItem>
-            ))}
+            {allExhibitions.map(exhibition => {
+                const currentStatus = today - exhibition.node.acf.startingDateNoFormat
+                const duration = exhibition.node.acf.endingDateNoFormat - exhibition.node.acf.startingDateNoFormat
+                if (currentStatus >= 0 && currentStatus <= duration) {
+                    return (
+                        <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
+                            <Link className="link" to={exhibition.node.path}>
+                                <p className="date-small">Until {exhibition.node.acf.ending_date}</p>
+                                <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
+                                <h1>{exhibition.node.title}</h1>
+                                <h2>{exhibition.node.exhibition_subtitle}</h2>
+                            </Link>
+                        </ExhibitionItem>
+                    )   
+                }
+            })}
             </OnViewWrapper>
 
             {/* soon */}
             <Heading className="overviewHeading"><h1>soon</h1></Heading>
             <OnViewWrapper className="OnViewWrapper">
-            {allExhibitions.map(exhibition => (
-                     <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
+            {allExhibitions.map(exhibition => {
+                const currentStatus = today - exhibition.node.acf.startingDateNoFormat
+                const duration = exhibition.node.acf.endingDateNoFormat - exhibition.node.acf.startingDateNoFormat
+                console.log(currentStatus)
+                if (currentStatus < 0 ) {
+                    return(
+                        <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
+                                    
+                                    {/* {exhibition.node.acf.starting_date ? 'undefined' : 'not'} */}
+                                    <Link className="link" to={exhibition.node.path}>
+                                        <p className="date-small">{exhibition.node.acf.starting_date}</p>
+                                        <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
+                                        <h1>{exhibition.node.title}</h1>
+                                        <h2>{exhibition.node.exhibition_subtitle}</h2>
+                                    </Link>
                                 
-                                {/* {exhibition.node.acf.starting_date ? 'undefined' : 'not'} */}
-                                <Link className="link" to={exhibition.node.path}>
-                                    <p className="date-small">{exhibition.node.acf.starting_date}</p>
-                                    <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
-                                    <h1>{exhibition.node.title}</h1>
-                                    <h2>{exhibition.node.exhibition_subtitle}</h2>
-                                </Link>
-                            
-                    </ExhibitionItem>
-            ))}
+                        </ExhibitionItem>
+                    )
+                }
+            })}
             </OnViewWrapper>
             
 
             {/* past */}
             <Heading className="overviewHeading"><h1>past</h1></Heading>
             <OnViewWrapper className="OnViewWrapper">
-            {allExhibitions.map(exhibition => (
-                <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
-                    <Link className="link" to={exhibition.node.path}>
-                        <p className="date-small">{exhibition.node.acf.starting_date}</p>
-                        <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
-                        <h1>{exhibition.node.title}</h1>
-                        <h2>{exhibition.node.exhibition_subtitle}</h2>
-                    </Link> 
-                </ExhibitionItem>
-            ))}
+            {allExhibitions.map(exhibition => {
+                const currentStatus = today - exhibition.node.acf.startingDateNoFormat
+                const duration = exhibition.node.acf.endingDateNoFormat - exhibition.node.acf.startingDateNoFormat
+                if (currentStatus >= 0 && currentStatus > duration) {
+                    return(
+                        <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
+                            <Link className="link" to={exhibition.node.path}>
+                                <p className="date-small">{exhibition.node.acf.starting_date} – {exhibition.node.acf.ending_date}</p>
+                                <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
+                                <h1>{exhibition.node.title}</h1>
+                                <h2>{exhibition.node.exhibition_subtitle}</h2>
+                            </Link> 
+                        </ExhibitionItem>
+                    )
+                }
+            })}
             </OnViewWrapper>
             
             <Back>
@@ -101,24 +121,22 @@ export default ExhibitionsPage
 
 export const exhibitionsQuery = graphql`
 {
-    site {
-        buildTime
-    }
-
-    allWordpressWpExhibitions {
+    allWordpressWpExhibitions(sort: {order: DESC, fields: acf___starting_date}) {
         edges {
             node {
                 id
                 title
                 path
                 acf {
-                fullwidth_image {
-                    source_url
-                    title
-                }
-                starting_date(formatString: "MMM DD YYYY")
-                ending_date
-                exhibition_subtitle
+                    fullwidth_image {
+                        source_url
+                        title
+                    }
+                    startingDateNoFormat: starting_date
+                    endingDateNoFormat: ending_date
+                    starting_date(formatString: "MMM DD")
+                    ending_date(formatString: "MMM DD YYYY")
+                    exhibition_subtitle
                 }
             }
         }
