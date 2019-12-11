@@ -4,6 +4,9 @@ import GlobalStyle from '../components/GlobalStyle'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
+import Footer from '../components/Footer'
+
+
 const NavExtended = styled.div`
   height: 100%;
   display: flex;
@@ -29,22 +32,26 @@ const StyledNavItems = styled(Link)`
   }
 `
 
-const NavHome= styled.div`
+const NavHome = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 5.714vw;
 `
 
-const Footer = styled.footer`
+const FooterWrapper = styled.footer`
   background-color: #1D1D1B;
-  height: 300px;
   color: #FFF;
   font-family: 'Trade-Gothic';
   font-size: 2rem;
   text-transform: uppercase;
 `
 
+const Contact = styled.div`
+
+`
+
 export default ({ children }) => (
+
     <div>
       <div className="layout">
         <GlobalFonts />
@@ -93,6 +100,8 @@ export default ({ children }) => (
         </NavHome>
         <div className="pageContent">{children}</div>
       </div>
-      <Footer>This is the footer</Footer>
+      <FooterWrapper>
+        <Footer />
+      </FooterWrapper>
     </div>
 )
