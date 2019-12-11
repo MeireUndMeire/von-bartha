@@ -81,14 +81,14 @@ const EventTemplate = (props) => {
                     <a href={`${event.acf.link_url}`} target="_blank" rel="noopener noreferrer"><h2>{event.acf.link_text}</h2></a>
                   </div>  
               }
-              {event.acf.download_file &&
+              {event.acf.download_file.source_url != null &&
                 <div className="timetable linkBlock">
                   <a href={event.acf.download_file} download target="_blank" rel="noopener noreferrer"><h2>{event.acf.download_text}</h2></a>
                 </div>
               } 
         </Linkss>
         <Link className="backLink" to="/agenda"><h2>&#8592; all events</h2></Link>
-        
+
       </div>
     </Layout>
   )
@@ -113,7 +113,9 @@ export const eventTemplateQuery = graphql`
           acf {
             color_background
             color_text
-            download_file
+            download_file {
+              source_url
+            }
             download_text
             starting_date(formatString: "MMM DD")
             ending_date(formatString: "MMM DD YYYY")
