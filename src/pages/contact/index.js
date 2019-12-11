@@ -42,6 +42,9 @@ const About = styled.div`
         text-align: center;
     }
     .imageWrapper {
+        @media only screen and (max-width: 767px) {
+        max-width: 100%;
+        }
         margin: 0 auto;
         max-width: 70vw;
         caption {
@@ -49,6 +52,9 @@ const About = styled.div`
         }
     }
     .caption > p{
+        @media only screen and (max-width: 767px) {
+            margin-left: 20.5%;
+        }
         margin-left: 11.5%;
         margin-top: 10px;
         font-family: 'Trade-Gothic';
@@ -71,7 +77,16 @@ const Location = styled.div`
 `
 
 const LocationItem = styled.div`
-
+    @media only screen and (max-width: 767px) {
+        padding-top: 10px;
+        display: table;
+        .first {
+            display: table-footer-group;
+        }
+        .second {
+            display: table-header-group;
+        }
+    }
 `
 
 const ArtistItem = styled.div`
@@ -108,12 +123,12 @@ const ContactAboutPage = (props) => {
                         <Location className="fullWidth" key={index} style={{backgroundColor: location.location_background_color}}>
                             <Wrapper>
                                 <LocationItem className="two-grid-item">
-                                    <img alt={location.location_image.title} src={location.location_image.source_url} />
-                                    <h1>{location.location_title}</h1>
+                                    <img className="first" alt={location.location_image.title} src={location.location_image.source_url} />
+                                    <h1 className="second">{location.location_title}</h1>
                                 </LocationItem>
                                 <LocationItem className="two-grid-item">
-                                    <img alt={location.location_image.title} src={location.location_image.source_url} />
-                                    <p dangerouslySetInnerHTML={{ __html: location.location_description }}></p>      
+                                    <img className="first" alt={location.location_image.title} src={location.location_image.source_url} />
+                                    <p className="second" dangerouslySetInnerHTML={{ __html: location.location_description }}></p>      
                                 </LocationItem>
                                 <h2>{location.location_address}</h2>
                                 <h2>{location.opening_times}</h2>
