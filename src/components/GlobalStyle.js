@@ -63,7 +63,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .overviewHeading {
-    margin: 5.714vw 0;
+    padding: 5.714vw 0;
   }
 
   .two-grid-item {
