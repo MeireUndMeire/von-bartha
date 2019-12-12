@@ -38,8 +38,8 @@ const ExhibitionTemplate = (props) => {
       <div className="exhibition">
 
         <Titles className="detailHeading">
-          {exhibition.title &&
-            <h1>{exhibition.title}</h1>
+          {exhibition.acf.artist_object != null &&
+            <h1>{exhibition.acf.artist_object[0].post_name}</h1>
           }
 
           { exhibition.acf.optional_artist != null &&
@@ -47,8 +47,9 @@ const ExhibitionTemplate = (props) => {
                 <h1 key={index}>{artist.artist}</h1>
             ))
           }
+          {exhibition.acf.exhibition_subtitle != null &&
           <h2>{exhibition.acf.exhibition_subtitle}</h2>
-
+          }
         </Titles>  
         <img className="fullWidth" alt={exhibition.acf.fullwidth_image.title} src={exhibition.acf.fullwidth_image.source_url} />
         <h2>{exhibition.acf.starting_date} – {exhibition.acf.ending_date}</h2>
