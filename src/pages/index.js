@@ -5,12 +5,18 @@ import Layout from '../components/layout';
 
 import ExhibitionsModule from "../components/LandingModules/Exhibitions/ExhibitionsModule"
 import ArtistsModule from "../components/LandingModules/Artists/ArtistsModule"
+import AboutModule from "../components/LandingModules/About/AboutModule"
+import SocialModule from "../components/LandingModules/Social/SocialModule"
+
 
 
 const Landing = (props) => {
   
   const allModules = props.data.allWordpressPage.edges
   const exhibitions = props.data.allWordpressWpExhibitions
+  const social = props.data.allWordpressAcfOptions.edges[0].node.options
+
+  console.log(social)
 
   return (
   <Layout>
@@ -22,10 +28,21 @@ const Landing = (props) => {
               <div key={index}>
               {modulesList.map((moduleItem, index) => {
                 const typeName = moduleItem.__typename
+                
+
+                
 
                 switch(typeName) {
                   case "WordPressAcf_exhibitions_module":
                   return <ExhibitionsModule key={index} {...exhibitions}/>
+                    break;
+
+                  case "WordPressAcf_about_module":
+                  return <AboutModule key={index} {...moduleItem}/>
+                    break;
+
+                  case "WordPressAcf_social_module":
+                  return <SocialModule key={index} {...social}/>
                     break;
 
                   case "WordPressAcf_artists_module":
@@ -60,6 +77,9 @@ export const pageQuery = graphql`
           acf {
             modules_page {
               __typename
+              ... on WordPressAcf_about_module {
+                about_module
+              }
             }
           }
         }
@@ -85,6 +105,17 @@ export const pageQuery = graphql`
               }
           }
       }
-  }
+    }
+    allWordpressAcfOptions {
+      edges {
+        node {
+          options {
+            facebook
+            instagram
+            twitter
+          }
+        }
+      }
+    }
   }
 `
