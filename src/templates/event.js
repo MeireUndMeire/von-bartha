@@ -35,6 +35,7 @@ const EventTemplate = (props) => {
   const backgroundColor = event.acf.color_background
   const textColor = event.acf.color_text
   
+  console.log(event.acf.fullwidth_image)
 
   return (
     <Layout>
@@ -54,8 +55,13 @@ const EventTemplate = (props) => {
             }
 
           </Titles>  
+          {event.acf.fullwidth_image != null &&
           <img className="fullWidth" alt={event.acf.fullwidth_image.title} src={event.acf.fullwidth_image.source_url} />
-          <h2>{event.acf.event_subtitle}</h2>
+          }
+          {event.acf.event_subtitle != null &&
+            <h2>{event.acf.event_subtitle}</h2>
+          }
+          
           <h2>{event.acf.starting_date} – {event.acf.ending_date}</h2>
           <h2>{event.acf.event_location}</h2>
           
@@ -81,9 +87,9 @@ const EventTemplate = (props) => {
                     <a href={`${event.acf.link_url}`} target="_blank" rel="noopener noreferrer"><h2>{event.acf.link_text}</h2></a>
                   </div>  
               }
-              {event.acf.download_file.source_url != null &&
+              {event.acf.download_file != null &&
                 <div className="timetable linkBlock">
-                  <a href={event.acf.download_file} download target="_blank" rel="noopener noreferrer"><h2>{event.acf.download_text}</h2></a>
+                  <a href={event.acf.download_file.source_url} download target="_blank" rel="noopener noreferrer"><h2>{event.acf.download_text}</h2></a>
                 </div>
               } 
         </Linkss>
