@@ -7,11 +7,13 @@ const GlobalStyle = createGlobalStyle`
   html {
     margin: 0;
     padding: 0;
+    background-color: #1D1D1B;
   }
   body {
     overflow-x: hidden;
     width: 100vw;
     color: #1D1D1B;
+    background-color: #FFF;
   }
 
   html, body, div, span, applet, object, iframe,
