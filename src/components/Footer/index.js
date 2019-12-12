@@ -1,5 +1,5 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 import styled from "styled-components"
 
 
@@ -76,7 +76,7 @@ export default () => (
           ))}
           <div className="table-item"></div>
           <div className="table-item"></div>
-          <div className="table-item">Other pages</div>
+          <div className="table-item"><Link className="link" to={`/press-releases`}>Press</Link></div>
         </Table>
       </div>
     )}
