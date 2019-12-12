@@ -9,8 +9,7 @@ import ArtistsModule from "../components/LandingModules/Artists/ArtistsModule"
 
 const Landing = (props) => {
   
-  const allModules = props.data.allWordpressPage.edges;
-
+  const allModules = props.data.allWordpressPage.edges
   const exhibitions = props.data.allWordpressWpExhibitions
 
   return (
@@ -26,7 +25,7 @@ const Landing = (props) => {
 
                 switch(typeName) {
                   case "WordPressAcf_exhibitions_module":
-                  return <ExhibitionsModule key={index}/>
+                  return <ExhibitionsModule key={index} {...exhibitions}/>
                     break;
 
                   case "WordPressAcf_artists_module":
@@ -66,21 +65,26 @@ export const pageQuery = graphql`
         }
       }
     }
-    allWordpressWpExhibitions {
+    allWordpressWpExhibitions(sort: {order: DESC, fields: acf___starting_date}) {
       edges {
-        node {
-          id
-          title
-          acf {
-            fullwidth_image {
-              source_url
+          node {
+              id
               title
-            }
-            starting_date
-            ending_date
+              path
+              acf {
+                  fullwidth_image {
+                      source_url
+                      title
+                  }
+                  startingDateNoFormat: starting_date
+                  endingDateNoFormat: ending_date
+                  starting_date(formatString: "MMM DD")
+                  ending_date(formatString: "MMM DD YYYY")
+                  exhibition_subtitle
+                  exhibition_location
+              }
           }
-        }
       }
-    }
+  }
   }
 `
