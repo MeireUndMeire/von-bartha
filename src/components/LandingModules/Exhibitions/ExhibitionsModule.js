@@ -110,7 +110,7 @@ const ExhibitionsModule = (props) => {
                           <div className="imageWrapper" style={{backgroundImage: `url(${exhibition.node.acf.fullwidth_image.source_url})`}}>
                             <div className="textWrapper"><h1 >{exhibition.node.title}</h1></div>
                           </div>
-                          <div class="itemInfoWrapper">
+                          <div className="itemInfoWrapper">
                             <h2>{exhibition.node.acf.exhibition_subtitle}</h2>
                             <h2>{exhibition.node.acf.starting_date} – {exhibition.node.acf.ending_date}</h2>
                             <h2>{exhibition.node.acf.exhibition_location}</h2>
@@ -135,7 +135,7 @@ const ExhibitionsModule = (props) => {
                           <div className="imageWrapper" style={{backgroundImage: `url(${exhibition.node.acf.fullwidth_image.source_url})`}}>
                             <div className="textWrapper"><h1 >{exhibition.node.title}</h1></div>
                           </div>
-                          <div class="itemInfoWrapper">
+                          <div className="itemInfoWrapper">
                             <h2>{exhibition.node.acf.exhibition_subtitle}</h2>
                             <h2>{exhibition.node.acf.starting_date} – {exhibition.node.acf.ending_date}</h2>
                             <h2>{exhibition.node.acf.exhibition_location}</h2>
@@ -160,7 +160,7 @@ const ExhibitionsModule = (props) => {
                           <div className="imageWrapper" style={{backgroundImage: `url(${exhibition.node.acf.fullwidth_image.source_url})`}}>
                             <div className="textWrapper"><h1 >{exhibition.node.title}</h1></div>
                           </div>
-                          <div class="itemInfoWrapper">
+                          <div className="itemInfoWrapper">
                             <h2>{exhibition.node.acf.exhibition_subtitle}</h2>
                             <h2>{exhibition.node.acf.starting_date} – {exhibition.node.acf.ending_date}</h2>
                             <h2>{exhibition.node.acf.exhibition_location}</h2>
