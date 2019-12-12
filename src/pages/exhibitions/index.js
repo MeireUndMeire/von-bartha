@@ -32,10 +32,7 @@ const Back = styled.div`
 
 const ExhibitionsPage = (props) => {
     const allExhibitions = props.data.allWordpressWpExhibitions.edges
-    let today = moment(new Date()).format('YYYYMMDD');
-
-
-    // .acf.endingDateDifferenceFromPresent, .acf.startingDateDifferenceFromPresent
+    let today = moment(new Date()).format('YYYYMMDD')
 
     return (
 
@@ -66,15 +63,14 @@ const ExhibitionsPage = (props) => {
             {/* soon */}
             <Heading className="overviewHeading"><h1>soon</h1></Heading>
             <OnViewWrapper className="OnViewWrapper">
+
             {allExhibitions.map(exhibition => {
                 const currentStatus = today - exhibition.node.acf.startingDateNoFormat
                 const duration = exhibition.node.acf.endingDateNoFormat - exhibition.node.acf.startingDateNoFormat
-                console.log(currentStatus)
                 if (currentStatus < 0 ) {
                     return(
                         <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
                                     
-                                    {/* {exhibition.node.acf.starting_date ? 'undefined' : 'not'} */}
                                     <Link className="link" to={exhibition.node.path}>
                                         <p className="date-small">{exhibition.node.acf.starting_date}</p>
                                         <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
@@ -96,7 +92,7 @@ const ExhibitionsPage = (props) => {
                 const currentStatus = today - exhibition.node.acf.startingDateNoFormat
                 const duration = exhibition.node.acf.endingDateNoFormat - exhibition.node.acf.startingDateNoFormat
                 if (currentStatus >= 0 && currentStatus > duration) {
-                    return(
+                    return (
                         <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
                             <Link className="link" to={exhibition.node.path}>
                                 <p className="date-small">{exhibition.node.acf.starting_date} – {exhibition.node.acf.ending_date}</p>
