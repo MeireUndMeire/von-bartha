@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 
 const Contact = styled.div`
-  padding: 1vw 1vw 10vw;
+  padding-bottom: 10vw;
   width: 70%;
   a:visited, a {
     color: #FFF;
@@ -17,14 +17,21 @@ const Table = styled.div`
   align-items: flex-start;
   justify-content: space-between;
 
+  padding-bottom: 10vw;
+
   font-size: 10px;
   text-transform: capitalize;
-  
-  padding: 1vw 1vw 10vw;
 
   a:visited, a {
     color: #FFF;
     &:not(:first-child) {margin-left: 20px;}
+  }
+`
+
+const FooterWrapper = styled.div`
+  padding: 1vw 1vw 10vw;
+  @media only screen and (max-width: 767px) {
+    padding-bottom: 2vw;
   }
 `
 
@@ -56,7 +63,7 @@ export default () => (
       }
     `}
     render={data => (
-      <div>
+      <FooterWrapper>
         <Contact>   
           <h2>{data.wordpressAcfOptions.options.contact.contact_text}</h2>
           <h2>{data.wordpressAcfOptions.options.contact.phone}</h2>
@@ -78,7 +85,7 @@ export default () => (
           <div className="table-item"></div>
           <div className="table-item"><Link className="link" to={`/press-releases`}>Press</Link></div>
         </Table>
-      </div>
+      </FooterWrapper>
     )}
   />
 )
