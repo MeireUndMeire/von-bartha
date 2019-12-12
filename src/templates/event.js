@@ -12,6 +12,16 @@ const Titles = styled.div`
   
 `
 
+const Event = styled.div`
+  .fullWidth {
+    max-height: none;
+    padding: 0 1vw;
+    @media only screen and (max-width: 767px) {
+      padding: 0 2vw;
+    }
+  }
+`
+
 const Linkss = styled.div`
   .timetable {
     background-color: #FF4301;
@@ -35,13 +45,12 @@ const EventTemplate = (props) => {
   const backgroundColor = event.acf.color_background
   const textColor = event.acf.color_text
   
-  console.log(event.acf.fullwidth_image)
 
   return (
     <Layout>
 
-      <div className="event">
-        <div style={{backgroundColor: backgroundColor, color: textColor }}>
+      <Event >
+        <div className="fullWidth" style={{backgroundColor: backgroundColor, color: textColor }}>
           <Titles className="detailHeading">
 
             {event.title &&
@@ -95,7 +104,7 @@ const EventTemplate = (props) => {
         </Linkss>
         <Link className="backLink" to="/agenda"><h2>&#8592; all events</h2></Link>
 
-      </div>
+      </Event>
     </Layout>
   )
 
