@@ -137,7 +137,7 @@ const ContactAboutPage = (props) => {
                         </Location>
                     ))} 
                 </Locations>
-                <About>
+                <About id="about">
                         <h1 className="overviewHeading">About</h1>
                         {allContent.acf.about_content_page.map((aboutModule, index) => (
                         
