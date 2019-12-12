@@ -16,7 +16,6 @@ const Landing = (props) => {
   const exhibitions = props.data.allWordpressWpExhibitions
   const social = props.data.allWordpressAcfOptions.edges[0].node.options
 
-  console.log(social)
 
   return (
   <Layout>

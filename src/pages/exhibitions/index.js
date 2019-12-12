@@ -66,7 +66,6 @@ const ExhibitionsPage = (props) => {
 
             {allExhibitions.map(exhibition => {
                 const currentStatus = today - exhibition.node.acf.startingDateNoFormat
-                const duration = exhibition.node.acf.endingDateNoFormat - exhibition.node.acf.startingDateNoFormat
                 if (currentStatus < 0 ) {
                     return(
                         <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
