@@ -29,7 +29,6 @@ const artistTemplate = (props) => {
   const artist = props.data.allWordpressWpArtists.edges[0].node
   const exhibition = props.data.allWordpressWpExhibitions
 
-  console.log(exhibition)
   
   return (
     <Layout>
@@ -116,7 +115,7 @@ export const query = graphql`
         }
       }
     }
-    allWordpressWpExhibitions(filter: {slug: { eq: $slug}}) {
+    allWordpressWpExhibitions(sort: {fields: acf___starting_date, order: ASC}, filter: {acf: {artist_object: {elemMatch: {post_name: {eq: $slug}}}}}) {
       edges {
         node {
           slug
