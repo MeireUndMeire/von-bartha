@@ -51,7 +51,7 @@ const ExhibitionTemplate = (props) => {
           <h2>{exhibition.acf.exhibition_subtitle}</h2>
           }
         </Titles>  
-        <img className="fullWidth" alt={exhibition.acf.fullwidth_image.title} src={exhibition.acf.fullwidth_image.source_url} />
+        <img className="fullWidth" alt="" src={exhibition.acf.fullwidth_image} />
         <h2>{exhibition.acf.starting_date} – {exhibition.acf.ending_date}</h2>
         <h2>{exhibition.acf.exhibition_location}</h2>
         

@@ -64,7 +64,7 @@ const ExhibitionsPage = (props) => {
             <Heading className="overviewHeading"><h1>soon</h1></Heading>
             <OnViewWrapper className="OnViewWrapper">
 
-            {allExhibitions.map(exhibition => {
+            {allExhibitions.map((exhibition, index) => {
                 const currentStatus = today - exhibition.node.acf.startingDateNoFormat
                 if (currentStatus < 0 ) {
                     return(
@@ -72,7 +72,7 @@ const ExhibitionsPage = (props) => {
                                     
                                     <Link className="link" to={exhibition.node.path}>
                                         <p className="date-small">{exhibition.node.acf.starting_date}</p>
-                                        <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
+                                        <img alt={index} src={exhibition.node.acf.fullwidth_image} />
                                         <h1>{exhibition.node.title}</h1>
                                         <h2>{exhibition.node.exhibition_subtitle}</h2>
                                     </Link>
