@@ -25,9 +25,6 @@ const Social = styled.div`
   .wrapper {
     display: flex;
   }
-  .underline {
-    text-decoration: underline;
-  }
 `
 
 

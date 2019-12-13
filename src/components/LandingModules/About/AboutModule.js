@@ -28,9 +28,6 @@ const About = styled.div`
   .right {
     text-align: right;
   }
-  .underline {
-    text-decoration: underline;
-  }
 `
 
 

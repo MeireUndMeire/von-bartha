@@ -205,6 +205,10 @@ const GlobalStyle = createGlobalStyle`
     text-transform: capitalize;
   }
 
+  .underline {
+    text-decoration: underline;
+  }
+  
   .navLink {
     @media only screen and (max-width: 767px) {
       font-size: 2rem;
