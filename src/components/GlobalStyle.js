@@ -49,11 +49,13 @@ const GlobalStyle = createGlobalStyle`
 
     .fullWidth {
       width: 100vw;
-      max-height: 70vh;
       object-fit: cover;
       margin-left: -1%;
       @media only screen and (max-width: 767px) {
         margin-left: -2%;
+      }
+      img {
+        max-height: 70vh;
       }
     }
   }
