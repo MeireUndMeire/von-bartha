@@ -44,6 +44,8 @@ const EventTemplate = (props) => {
   const event = props.data.allWordpressWpEvents.edges[0].node
   const backgroundColor = event.acf.color_background
   const textColor = event.acf.color_text
+
+  console.log(event.acf.gallery_module_events[0])
   
 
   return (
@@ -78,12 +80,16 @@ const EventTemplate = (props) => {
             <Textblock className="detailTextblock"><div dangerouslySetInnerHTML={{ __html: event.acf.textblock }}></div></Textblock>
           }
           
-          {event.acf.gallery_module_events != null  &&
+          {event.acf.gallery_module_events[0] != null  &&
           <Gallery className="slides fullWidth detailGallery">
               {event.acf.gallery_module_events[0].slides.map((slide, index) => (
                   <div className="slide" key={index} id={'slide' + index}>
-                    <img src={slide.image.source_url} alt={slide.image.title} />
-                    <div className="caption" dangerouslySetInnerHTML={{ __html: slide.caption }}></div>
+                  {slide.image != null &&
+                    <div>
+                      <img src={slide.image.source_url} alt={slide.image.title} />
+                      <div className="caption" dangerouslySetInnerHTML={{ __html: slide.caption }}></div>
+                    </div>
+                  }
                   </div>
               ))}
           </Gallery>
