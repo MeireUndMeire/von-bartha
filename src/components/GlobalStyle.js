@@ -170,6 +170,13 @@ const GlobalStyle = createGlobalStyle`
     width: 55%;
     max-width: 820px;
     margin: 80px auto;
+    div {
+      font-family: 'Sabon';
+      font-size: 22px;
+      letter-spacing: 0;
+      line-height: 30px;
+      margin-bottom: 1rem;
+    }
   }
 
   h1 {
