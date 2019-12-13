@@ -15,9 +15,11 @@ const Titles = styled.div`
 const Event = styled.div`
   .fullWidth {
     max-height: none;
-    padding: 0 1vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
     @media only screen and (max-width: 767px) {
-      padding: 0 2vw;
+      padding-left: 2vw;
+      padding-right: 2vw;
     }
   }
 `
@@ -44,8 +46,6 @@ const EventTemplate = (props) => {
   const event = props.data.allWordpressWpEvents.edges[0].node
   const backgroundColor = event.acf.color_background
   const textColor = event.acf.color_text
-
-  console.log(event.acf.gallery_module_events[0])
   
 
   return (
