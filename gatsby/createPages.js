@@ -23,11 +23,6 @@ module.exports = async ({ actions, graphql }) => {
           fields {
             deploy
           }
-          childWordPressAcfEventModule {
-            event {
-              post_title
-            }
-          }
         }
       }
     }
@@ -73,7 +68,6 @@ module.exports = async ({ actions, graphql }) => {
   }
   `
   ).then(result => {
-    console.log(JSON.stringify(result, null, 4))
     if (result.errors) {
       throw result.errors
     }
@@ -100,8 +94,7 @@ module.exports = async ({ actions, graphql }) => {
           path: edge.node.path,
           component: pageTemplate,
           context: {
-            id: edge.node.id,
-            eventName: edge.node.childWordPressAcfEventModule.event.post_title
+            id: edge.node.id
           }
         })
       }
