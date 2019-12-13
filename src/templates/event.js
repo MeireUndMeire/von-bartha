@@ -76,11 +76,11 @@ const EventTemplate = (props) => {
           <h2>{event.acf.starting_date} – {event.acf.ending_date}</h2>
           <h2>{event.acf.event_location}</h2>
           
-          {event.acf.textblock &&
+          {event.acf.textblock != null &&
             <Textblock className="detailTextblock"><div dangerouslySetInnerHTML={{ __html: event.acf.textblock }}></div></Textblock>
           }
           
-          {event.acf.gallery_module_events[0] != null  &&
+          {event.acf.gallery_module_events != null  &&
           <Gallery className="slides fullWidth detailGallery">
               {event.acf.gallery_module_events[0].slides.map((slide, index) => (
                   <div className="slide" key={index} id={'slide' + index}>
@@ -119,7 +119,7 @@ const EventTemplate = (props) => {
 export default EventTemplate
 
 export const eventTemplateQuery = graphql`
-  query($slug: String!){
+  query eventQuery($slug: String!){
     site {
       siteMetadata {
         title
