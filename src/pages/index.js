@@ -15,7 +15,7 @@ const Landing = (props) => {
   const allModules = props.data.allWordpressPage.edges
   const exhibitions = props.data.allWordpressWpExhibitions
   const social = props.data.allWordpressAcfOptions.edges[0].node.options
-
+  const artists = props.data.allWordpressWpArtists
 
   return (
   <Layout>
@@ -44,8 +44,8 @@ const Landing = (props) => {
                   return <SocialModule key={index} {...social}/>
                     break;
 
-                  case "WordPressAcf_artists_module":
-                  return <ArtistsModule key={index}/>
+                  case "WordPressAcf_artist_module":
+                  return <ArtistsModule key={index} {...artists}/>
                     break;
                     
                   default:
@@ -112,6 +112,21 @@ export const pageQuery = graphql`
             facebook
             instagram
             twitter
+          }
+        }
+      }
+    }
+    allWordpressWpArtists {
+      edges {
+        node {
+          acf {
+            artist_name
+            preview_image {
+              source_url
+            }
+            fullwidth_image {
+              source_url
+            }
           }
         }
       }
