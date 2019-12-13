@@ -96,7 +96,9 @@ export const query = graphql`
           acf {
             artist_name
             artist_website
-            cv
+            cv {
+              source_url
+            }
             fullwidth_image {
               source_url
             }
