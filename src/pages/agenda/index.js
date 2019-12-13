@@ -22,7 +22,6 @@ const Heading = styled.div`
 `
 
 const EventItem = styled.div`
-
 `
 
 const Back = styled.div`
@@ -49,9 +48,9 @@ const AgendaPage = (props) => {
                     return (
                      <EventItem className="two-grid-item" key={event.node.id}>
                                 <Link className="link" to={event.node.path}>
-                                    <p className="date-small">Until {event.node.acf.starting_date}</p>
+                                    <p className="date-small">Until {event.node.acf.ending_date}</p>
                                     {event.node.acf.fullwidth_image != null &&
-                                        <img alt={event.node.acf.fullwidth_image.title} src={event.node.acf.fullwidth_image.source_url} />
+                                        <img alt={event.node.acf.fullwidth_image} src={event.node.acf.fullwidth_image} />
                                     }
                                     <h1>{event.node.acf.event_name}</h1>
                                     {event.node.acf.event_subtitle != null &&
@@ -77,7 +76,7 @@ const AgendaPage = (props) => {
                                 <Link className="link" to={event.node.path}>
                                     <p className="date-small">{event.node.acf.starting_date}</p>
                                     {event.node.acf.fullwidth_image != null &&
-                                        <img alt={event.node.acf.fullwidth_image.title} src={event.node.acf.fullwidth_image.source_url} />
+                                        <img alt={event.node.acf.fullwidth_image} src={event.node.acf.fullwidth_image} />
                                     }
                                     <h1>{event.node.acf.event_name}</h1>
                                     {event.node.acf.event_subtitle != null &&
@@ -102,9 +101,9 @@ const AgendaPage = (props) => {
                     return (
                         <EventItem className="two-grid-item" key={event.node.id}>
                             <Link className="link" to={event.node.path}>
-                                <p className="date-small">{event.node.acf.starting_date}</p>
+                                <p className="date-small">{event.node.acf.starting_date} – {event.node.acf.ending_date}</p>
                                 {event.node.acf.fullwidth_image != null &&
-                                    <img alt={event.node.acf.fullwidth_image.title} src={event.node.acf.fullwidth_image.source_url} />
+                                    <img alt={event.node.acf.fullwidth_image} src={event.node.acf.fullwidth_image} />
                                 }
                                 <h1>{event.node.acf.event_name}</h1>
                                 {event.node.acf.event_subtitle != null &&

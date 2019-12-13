@@ -67,7 +67,7 @@ const EventTemplate = (props) => {
 
           </Titles>  
           {event.acf.fullwidth_image != null &&
-          <img className="fullWidth" alt={event.acf.fullwidth_image.title} src={event.acf.fullwidth_image.source_url} />
+          <img className="fullWidth" alt={event.acf.fullwidth_image} src={event.acf.fullwidth_image} />
           }
           {event.acf.event_subtitle != null &&
             <h2>{event.acf.event_subtitle}</h2>

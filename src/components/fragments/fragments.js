@@ -57,9 +57,7 @@ export const eventFragment = graphql`
       event_location
       event_name
       event_subtitle
-      fullwidth_image {
-        source_url
-      }
+      fullwidth_image
       gallery_module_events {
         slides {
           image {
