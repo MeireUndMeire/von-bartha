@@ -1,5 +1,6 @@
+import { graphql } from 'gatsby'
 
-export const query = graphql`
+export const exhibitionFragment = graphql`
     fragment AcfExhibition on wordpress__wp_exhibitionsAcf {
       fullwidth_image {
         id
@@ -40,3 +41,38 @@ export const query = graphql`
     }
 `
 
+export const eventFragment = graphql`
+    fragment AcfEvent on wordpress__wp_eventsAcf {
+      color_background
+      color_text
+      download_file {
+        title
+        source_url
+      }
+      download_text
+      startingDateNoFormat: starting_date
+      endingDateNoFormat: ending_date
+      starting_date(formatString: "MMM DD")
+      ending_date(formatString: "MMM DD YYYY")
+      event_location
+      event_name
+      event_subtitle
+      fullwidth_image {
+        source_url
+      }
+      gallery_module_events {
+        slides {
+          image {
+            source_url
+          }
+          caption
+        }
+      }
+      header
+      link_text
+      link_url
+      textblock
+  }
+`
+
+            

@@ -132,32 +132,7 @@ export const eventTemplateQuery = graphql`
           slug
           title
           acf {
-            color_background
-            color_text
-            download_file {
-              source_url
-            }
-            download_text
-            starting_date(formatString: "MMM DD")
-            ending_date(formatString: "MMM DD YYYY")
-            event_location
-            event_name
-            event_subtitle
-            fullwidth_image {
-              source_url
-            }
-            gallery_module_events {
-              slides {
-                image {
-                  source_url
-                }
-                caption
-              }
-            }
-            header
-            link_text
-            link_url
-            textblock
+            ...AcfEvent
           }
         }
       }

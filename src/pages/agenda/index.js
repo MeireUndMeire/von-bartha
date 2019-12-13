@@ -134,16 +134,7 @@ export const EventsQuery = graphql`
                 id
                 path
                 acf {
-                    fullwidth_image {
-                        source_url
-                        title
-                    }
-                    startingDateNoFormat: starting_date
-                    endingDateNoFormat: ending_date
-                    starting_date(formatString: "MMM DD")
-                    ending_date(formatString: "MMM DD YYYY")
-                    event_subtitle
-                    event_name
+                    ...AcfEvent
                 }
             }
         }
