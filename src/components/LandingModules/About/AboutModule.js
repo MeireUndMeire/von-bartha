@@ -9,6 +9,8 @@ import styled from "styled-components"
 const About = styled.div`
   background-color: #BCCABA;
   padding: 1vw 1vw 5vw;
+  display: flex;
+  flex-direction: column;
   @media only screen and (max-width: 767px) {
     padding: 1vw 2vw 5vw;
   }
@@ -26,7 +28,8 @@ const About = styled.div`
     text-transform: none;;
   }
   .right {
-    text-align: right;
+    width: fit-content;
+    align-self: flex-end;
   }
 `
 
@@ -39,7 +42,7 @@ const AboutModule = (props) => {
     <About className="fullWidth">
       <h2 dangerouslySetInnerHTML={{ __html: about.about_module }}></h2>
       <div className="right">
-        <Link className="underline" to={`/contact#about`}><h2>Read more</h2></Link>
+        <Link to={`/contact#about`}><h2 className="underline">Read more</h2></Link>
       </div>
     </About>
   )

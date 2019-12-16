@@ -209,7 +209,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .underline {
-    text-decoration: underline;
+    border-bottom: 2px solid #1D1D1B;
   }
   
   .navLink {
