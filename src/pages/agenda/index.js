@@ -33,20 +33,29 @@ const AgendaPage = (props) => {
     const allEvents = props.data.allWordpressWpEvents.edges
     let today = moment(new Date()).format('YYYYMMDD')
 
+    let resultAmountOnView = 0
+    let resultAmountSoon = 0
+    let resultAmountPast = 0
+
+    console.log()
+
     return (
 
         <Layout>
             <Header>Agenda</Header>
 
             {/* on view */}
-            <Heading className="overviewHeading"><h1>now</h1></Heading>
+            {resultAmountOnView !== 0 &&
+                <Heading className="overviewHeading"><h1>now</h1></Heading>
+            }
             <OnViewWrapper className="OnViewWrapper">
             {allEvents.map(event => {
                 const currentStatus = today - event.node.acf.startingDateNoFormat
                 const duration = event.node.acf.endingDateNoFormat - event.node.acf.startingDateNoFormat
                 if (currentStatus >= 0 && currentStatus <= duration) {
                     return (
-                     <EventItem className="two-grid-item" key={event.node.id}>
+                    resultAmountOnView++, 
+                    <EventItem className="two-grid-item" key={event.node.id}>
                                 <Link className="link" to={event.node.path}>
                                     <p className="date-small">Until {event.node.acf.ending_date}</p>
                                     {event.node.acf.fullwidth_image != null &&
@@ -64,15 +73,17 @@ const AgendaPage = (props) => {
             </OnViewWrapper>
 
             {/* soon */}
-            <Heading className="overviewHeading"><h1>soon</h1></Heading>
+            {resultAmountSoon !== 0 &&
+                <Heading className="overviewHeading"><h1>soon</h1></Heading>
+            }
             <OnViewWrapper className="OnViewWrapper">
             {allEvents.map(event => {
                 const currentStatus = today - event.node.acf.startingDateNoFormat
                 if (currentStatus < 0 ) {
                     return(
+                    resultAmountSoon++,
                      <EventItem className="two-grid-item" key={event.node.id}>
                                 
-                                {/* {event.node.acf.starting_date ? 'undefined' : 'not'} */}
                                 <Link className="link" to={event.node.path}>
                                     <p className="date-small">{event.node.acf.starting_date}</p>
                                     {event.node.acf.fullwidth_image != null &&
@@ -92,13 +103,16 @@ const AgendaPage = (props) => {
             
 
             {/* past */}
-            <Heading className="overviewHeading"><h1>past</h1></Heading>
+            {resultAmountPast > 0 &&
+                <Heading className="overviewHeading"><h1>past</h1></Heading>
+            }
             <OnViewWrapper className="OnViewWrapper">
             {allEvents.map(event => {
                 const currentStatus = today - event.node.acf.startingDateNoFormat
                 const duration = event.node.acf.endingDateNoFormat - event.node.acf.startingDateNoFormat
                 if (currentStatus >= 0 && currentStatus > duration) {
                     return (
+                        resultAmountPast++,
                         <EventItem className="two-grid-item" key={event.node.id}>
                             <Link className="link" to={event.node.path}>
                                 <p className="date-small">{event.node.acf.starting_date} – {event.node.acf.ending_date}</p>
