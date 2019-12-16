@@ -68,7 +68,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .overviewHeading {
-    padding: 5.714vw 0;
+    padding-bottom: 5.714vw;
   }
 
   .two-grid-item {
@@ -190,10 +190,10 @@ const GlobalStyle = createGlobalStyle`
       line-height: 2rem;
     } */}
     font-family: 'Trade-Gothic';
-    font-size: 5.714vw;
+    font-size: 5.297vw;
     font-weight: 400;
     text-transform: uppercase;
-    line-height: 5.714vw;
+    line-height: 5.297vw;
   }
 
   h2 {
@@ -202,9 +202,9 @@ const GlobalStyle = createGlobalStyle`
       line-height: 2rem;
     } */}
     font-family: 'Trade-Gothic';
-    font-size: 5.714vw;
+    font-size: 5.297vw;
     font-weight: 400;
-    line-height: 5.714vw;
+    line-height: 5.297vw;
     text-transform: capitalize;
   }
 
