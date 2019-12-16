@@ -87,9 +87,19 @@ const ExhibitionTemplate = (props) => {
           {exhibition.acf.exhibition_subtitle != null &&
           <h2>{exhibition.acf.exhibition_subtitle}</h2>
           }
-        </Titles>  
-        <img className="fullWidth" alt="" src={exhibition.acf.fullwidth_image} />
-        <h2>{exhibition.acf.starting_date} – {exhibition.acf.ending_date}</h2>
+        </Titles>
+        {exhibition.acf.fullwidth_image != null &&
+          <img className="fullWidth" alt="" src={exhibition.acf.fullwidth_image} />
+        }
+        <h2>
+          {exhibition.acf.fullwidth_image != null &&
+            `${exhibition.acf.starting_date}`
+          }
+          {exhibition.acf.ending_date != null &&
+           ` – ${exhibition.acf.ending_date}`
+          }
+        </h2>
+        
         <h2>{exhibition.acf.exhibition_location}</h2>
         
         {exhibition.acf.textblock &&
