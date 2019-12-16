@@ -45,7 +45,7 @@ const PublicationItem = styled.div`
         transition: .2s;
         &:hover {
             opacity: 1;
-            backdrop-filter: blur(5px) brightness(1.1);
+            backdrop-filter: blur(10px);
         }
 
         h2 {
