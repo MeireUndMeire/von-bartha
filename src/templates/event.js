@@ -1,11 +1,42 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import styled from 'styled-components'
+import Flickity from 'react-flickity-component'
 
 import Layout from "../components/layout"
 
 const Gallery = styled.div`
+  padding-bottom: 8rem;
 
+  img {
+    max-height: 70vh;
+    max-width: 70vw;
+    width: auto;
+  }
+  .flickity-slider {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    width: 100%;
+  }
+  .slide {
+    margin-left: 2rem;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .caption {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    max-width: fit-content;
+    height: 6rem;
+  }
+  .caption > p {
+    font-family: 'Trade-Gothic';
+    font-size: 1rem;
+    line-height: 20px;
+    margin-bottom: 5px;
+  }
 `
 
 const Titles = styled.div`
@@ -13,6 +44,11 @@ const Titles = styled.div`
 `
 
 const Event = styled.div`
+  .wrapper {
+    width: 98vw;
+    margin-left: -1vw;
+    padding: 0 1vw;
+  }
   .fullWidth {
     max-height: none;
     padding-left: 1vw;
@@ -21,6 +57,10 @@ const Event = styled.div`
       padding-left: 2vw;
       padding-right: 2vw;
     }
+  }
+  .headerImage {
+    width: 100vw;
+    margin-left: -1vw;
   }
 `
 
@@ -47,12 +87,18 @@ const EventTemplate = (props) => {
   const backgroundColor = event.acf.color_background
   const textColor = event.acf.color_text
   
+  const flickityOptions = {
+    initialIndex: 0,
+    prevNextButtons: false,
+    pageDots: false,
+    resize: true
+  }
 
   return (
     <Layout>
 
       <Event >
-        <div className="fullWidth" style={{backgroundColor: backgroundColor, color: textColor }}>
+        <div className="wrapper" style={{backgroundColor: backgroundColor, color: textColor }}>
           <Titles className="detailHeading">
 
             {event.title &&
@@ -67,7 +113,7 @@ const EventTemplate = (props) => {
 
           </Titles>  
           {event.acf.fullwidth_image != null &&
-          <img className="fullWidth" alt={event.acf.fullwidth_image} src={event.acf.fullwidth_image} />
+          <img className="headerImage" alt={event.acf.fullwidth_image} src={event.acf.fullwidth_image} />
           }
           {event.acf.event_subtitle != null &&
             <h2>{event.acf.event_subtitle}</h2>
@@ -81,19 +127,29 @@ const EventTemplate = (props) => {
           }
           
           {event.acf.gallery_module_events != null  &&
-          <Gallery className="slides fullWidth detailGallery">
-              {event.acf.gallery_module_events[0].slides.map((slide, index) => (
-                  <div className="slide" key={index} id={'slide' + index}>
-                  {slide.image != null &&
-                    <div>
-                      <img src={slide.image.source_url} alt={slide.image.title} />
-                      <div className="caption" dangerouslySetInnerHTML={{ __html: slide.caption }}></div>
+            <Gallery>
+              <Flickity
+                className={'carousel'} // default ''
+                elementType={'div'} // default 'div'
+                options={flickityOptions} // takes flickity options {}
+                disableImagesLoaded={false} // default false
+                reloadOnUpdate // default false
+                static // default false
+              >
+                {event.acf.gallery_module_events[0].slides.map((slide, index) => (
+                    <div className="slide" key={index} id={'slide' + index}>
+                    {slide.image != null &&
+                      <div>
+                        <img src={slide.image.source_url} alt={slide.image.title} />
+                        <div className="caption" dangerouslySetInnerHTML={{ __html: slide.caption }}></div>
+                      </div>
+                    }
                     </div>
-                  }
-                  </div>
-              ))}
-          </Gallery>
-          } 
+                ))}
+              </Flickity>
+            </Gallery>
+          }
+
         </div>
 
         <Linkss className="fullWidth linkBlocks">
