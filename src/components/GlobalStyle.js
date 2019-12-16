@@ -1,9 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
-  ::selection {
-    color: #1D1D1B;
-  }
   :focus {
     outline: #FFF;
   }
@@ -17,6 +14,9 @@ const GlobalStyle = createGlobalStyle`
     width: 100vw;
     color: #1D1D1B;
     background-color: #FFF;
+    ::selection {
+      color: #1D1D1B;
+    }
   }
 
   html, body, div, span, applet, object, iframe,
