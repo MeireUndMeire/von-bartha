@@ -4,3 +4,4 @@ public
 
 node_modules/fbjs/lib/UserAgent.js
 /node_modules/.yarn-integrity
+/src/utils/.DS_Store
