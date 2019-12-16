@@ -4,6 +4,9 @@ const GlobalStyle = createGlobalStyle`
   ::selection {
     color: #1D1D1B;
   }
+  :focus {
+    outline: #FFF;
+  }
   html {
     margin: 0;
     padding: 0;
@@ -221,6 +224,13 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     box-shadow: none;
     text-transform: uppercase;
+  }
+
+  .removeScrollBar {
+    &::-webkit-scrollbar { display: none; width: 0; height: 0; }
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   .date-small {
