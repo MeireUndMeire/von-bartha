@@ -65,10 +65,17 @@ const About = styled.div`
 `
 
 const Locations = styled.div`
-    p {
+    .second p {
         margin-top: 10px;
         font-size: 18px;
         line-height: 18px;
+    }
+    .additionalInfo p {
+        font-family: 'Trade-Gothic';
+        font-size: 5.714vw;
+        font-weight: 400;
+        line-height: 5.714vw;
+        text-transform: capitalize;
     }
 `
 
@@ -127,11 +134,12 @@ const ContactAboutPage = (props) => {
                                     <h1 className="second">{location.location_title}</h1>
                                 </LocationItem>
                                 <LocationItem className="two-grid-item">
-                                    <img className="first" alt={location.location_image.title} src={location.location_image.source_url} />
+                                    <a href={`${location.location_link}`} target="_blank" rel="noopener noreferrer">
+                                        <img className="first" alt={location.location_map.title} src={location.location_map.source_url} />
+                                    </a>
                                     <p className="second" dangerouslySetInnerHTML={{ __html: location.location_description }}></p>      
                                 </LocationItem>
-                                <h2>{location.location_address}</h2>
-                                <h2>{location.opening_times}</h2>
+                                <div className="additionalInfo" dangerouslySetInnerHTML={{ __html: location.location_additional_info }}></div>
                             </Wrapper>
                         
                         </Location>
@@ -193,9 +201,11 @@ export const contactAboutQuery = graphql`
               locations_header
               locations_page {
                 location_title
-                location_map
-                opening_times
-                location_address
+                location_map {
+                    source_url
+                }
+                location_link
+                location_additional_info
                 location_description
                 location_background_color
                 location_custom_color
