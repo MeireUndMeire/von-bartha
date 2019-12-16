@@ -98,15 +98,17 @@ const PublicationsModule = (props) => {
               >
             {publicationsModule.map((publication, index) => (
               <div key={index} className="slide" id={'slide' + index}>
-               {publication.node.acf.type_of_publication === "Artist's Book" &&
-                <div className="publication-name">                  
-                  <img className="hover-item" alt={index} src={publication.node.acf.artists_book_image.source_url} />
-                </div>
+                {publication.node.acf.type_of_publication === "Artist's Book" && 
+                  publication.node.acf.artists_book_image !== null &&
+                    <div className="publication-name">                  
+                      <img className="hover-item" alt={index} src={publication.node.acf.artists_book_image.source_url} />
+                    </div>
                 }
-                {publication.node.acf.type_of_publication === "Report" &&
-                <div className="publication-name">
-                  <img className="hover-item" alt={index} src={publication.node.acf.report_image.source_url} />
-                </div>
+                {publication.node.acf.type_of_publication === "Report" && 
+                  publication.node.acf.report_image != null &&
+                    <div className="publication-name">
+                      <img className="hover-item" alt={index} src={publication.node.acf.report_image.source_url} />
+                    </div>
                 }
               </div>
 
