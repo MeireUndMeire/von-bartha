@@ -29,6 +29,7 @@ const Gallery = styled.div`
     margin-top: 1rem;
     margin-left: 2rem;
     max-width: fit-content;
+    height: 6rem;
   }
   .caption > p {
     font-family: 'Trade-Gothic';
