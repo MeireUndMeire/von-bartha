@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import styled from 'styled-components'
+import Flickity from 'react-flickity-component'
 
 import Layout from "../components/layout"
 
@@ -29,6 +30,13 @@ const artistTemplate = (props) => {
   const artist = props.data.allWordpressWpArtists.edges[0].node
   const exhibition = props.data.allWordpressWpExhibitions
 
+  const flickityOptions = {
+    initialIndex: 0,
+    prevNextButtons: false,
+    pageDots: false,
+    resize: true
+  }
+
   
   return (
     <Layout>
@@ -41,15 +49,45 @@ const artistTemplate = (props) => {
         }
 
         {artist.acf.gallery_module_artists != null  &&
-        <Gallery className="slides fullWidth detailGallery">
+        <Gallery>
+          <Flickity
+            className={'carousel'} // default ''
+            elementType={'div'} // default 'div'
+            options={flickityOptions} // takes flickity options {}
+            disableImagesLoaded={false} // default false
+            reloadOnUpdate // default false
+            static // default false
+          >
             {artist.acf.gallery_module_artists[0].slides.map((slide, index) => (
                 <div className="slide" key={index} id={'slide' + index}>
                   <img src={slide.image.source_url} alt={slide.image.title} />
                   <div className="caption" dangerouslySetInnerHTML={{ __html: slide.caption }}></div>
                 </div>
             ))}
+          </Flickity>
         </Gallery>
         } 
+
+        {exhibition.acf.gallery_module_exhibitions != null  &&
+          <Gallery>
+            <Flickity
+              className={'carousel'} // default ''
+              elementType={'div'} // default 'div'
+              options={flickityOptions} // takes flickity options {}
+              disableImagesLoaded={false} // default false
+              reloadOnUpdate // default false
+              static // default false
+            >
+                  {exhibition.acf.gallery_module_exhibitions[0].slides.map((slide, index) => (
+                  <div key={index} className="slide" id={'slide' + index}>
+                    <img src={slide.image.source_url} alt={slide.image.title} />
+                    <div className="caption" dangerouslySetInnerHTML={{ __html: slide.caption }}></div>
+                  </div>
+              ))}
+            </Flickity>
+          </Gallery>
+        } 
+
 
         <Linkss className="fullWidth linkBlocks" >
 
