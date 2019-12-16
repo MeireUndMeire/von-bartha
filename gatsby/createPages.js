@@ -23,6 +23,16 @@ module.exports = async ({ actions, graphql }) => {
           fields {
             deploy
           }
+          acf {
+            modules_page {
+              __typename
+              ... on WordPressAcf_event_module {
+                event {
+                  post_name
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -90,13 +100,32 @@ module.exports = async ({ actions, graphql }) => {
     // create page for pages
     allWordpressPage.edges.forEach( edge => {
       if (edge.node.fields.deploy) {
-        createPage({
-          path: edge.node.path,
-          component: pageTemplate,
-          context: {
-            id: edge.node.id
-          }
-        })
+        if (edge.node.slug === "landing-page") {
+          console.log(JSON.stringify(edge.node.acf.modules_page, null, 4))
+          const moduleList = edge.node.acf.modules_page
+          moduleList.map(module => {
+            const typeName = module.__typename
+            if (typeName === "WordPressAcf_event_module") {
+              console.log(JSON.stringify(module.event.post_name, null, 4))
+              createPage({
+                path: edge.node.path,
+                component: pageTemplate,
+                context: {
+                  id: edge.node.id,
+                  eventName: module.event.post_name
+                }
+              })
+            }
+          })
+        } else {
+          createPage({
+            path: edge.node.path,
+            component: pageTemplate,
+            context: {
+              id: edge.node.id,
+            }
+          })
+        }
       }
     })
     

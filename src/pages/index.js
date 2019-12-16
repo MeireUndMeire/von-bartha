@@ -7,6 +7,8 @@ import ExhibitionsModule from "../components/LandingModules/Exhibitions/Exhibiti
 import ArtistsModule from "../components/LandingModules/Artists/ArtistsModule"
 import AboutModule from "../components/LandingModules/About/AboutModule"
 import SocialModule from "../components/LandingModules/Social/SocialModule"
+import PublicationsModule from "../components/LandingModules/Publications/PublicationsModule"
+import EventModule from "../components/LandingModules/Event/EventModule"
 
 
 
@@ -16,6 +18,8 @@ const Landing = (props) => {
   const exhibitions = props.data.allWordpressWpExhibitions
   const social = props.data.allWordpressAcfOptions.edges[0].node.options
   const artists = props.data.allWordpressWpArtists
+  const publications = props.data.allWordpressWpPublications
+  const allEvents = props.data.allWordpressWpEvents
 
   return (
   <Layout>
@@ -27,9 +31,6 @@ const Landing = (props) => {
               <div key={index}>
               {modulesList.map((moduleItem, index) => {
                 const typeName = moduleItem.__typename
-                
-
-                
 
                 switch(typeName) {
                   case "WordPressAcf_exhibitions_module":
@@ -46,6 +47,14 @@ const Landing = (props) => {
 
                   case "WordPressAcf_artist_module":
                   return <ArtistsModule key={index} {...artists}/>
+                    break;
+
+                  case "WordPressAcf_event_module":
+                  return <EventModule key={index} event={{moduleItem}} allEvents={{allEvents}}/>
+                    break;
+
+                  case "WordPressAcf_publications_module":
+                  return <PublicationsModule key={index} {...publications}/>
                     break;
                     
                   default:
@@ -65,7 +74,7 @@ const Landing = (props) => {
 export default Landing
 
 export const pageQuery = graphql`
-  {
+  query HomeQuery($eventName: String) {
     allWordpressPage(filter: {template: {eq: "template-landing.php"}}) {
       edges {
         node {
@@ -78,6 +87,16 @@ export const pageQuery = graphql`
               __typename
               ... on WordPressAcf_about_module {
                 about_module
+              }
+              ... on WordPressAcf_event_module {
+                event {
+                  post_name
+                }
+                background_color
+                text_color
+                image {
+                  source_url
+                }
               }
             }
           }
@@ -125,6 +144,36 @@ export const pageQuery = graphql`
               source_url
             }
             fullwidth_image {
+              source_url
+            }
+          }
+        }
+      }
+    }
+    allWordpressWpEvents(filter: {slug: {eq: $eventName}}) {
+      edges {
+        node {
+          slug
+          acf {
+            event_name
+            starting_date(formatString: "MMM DD YYYY")
+            event_location
+            fullwidth_image
+          }
+        }
+      }
+    }
+    allWordpressWpPublications {
+      edges {
+        node {
+          acf {
+            artists_book_name
+            report_title
+            type_of_publication
+            artists_book_image {
+              source_url
+            }
+            report_image {
               source_url
             }
           }
