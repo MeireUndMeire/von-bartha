@@ -50,7 +50,9 @@ const ExhibitionsPage = (props) => {
                         <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
                             <Link className="link" to={exhibition.node.path}>
                                 <p className="date-small">Until {exhibition.node.acf.ending_date}</p>
+                                {exhibition.node.acf.fullwidth_image != null &&
                                 <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
+                                }
                                 <h1>{exhibition.node.title}</h1>
                                 <h2>{exhibition.node.exhibition_subtitle}</h2>
                             </Link>
@@ -72,7 +74,9 @@ const ExhibitionsPage = (props) => {
                                     
                                     <Link className="link" to={exhibition.node.path}>
                                         <p className="date-small">{exhibition.node.acf.starting_date}</p>
-                                        <img alt={index} src={exhibition.node.acf.fullwidth_image} />
+                                        {exhibition.node.acf.fullwidth_image != null &&
+                                            <img alt={index} src={exhibition.node.acf.fullwidth_image.source_url} />
+                                        }
                                         <h1>{exhibition.node.title}</h1>
                                         <h2>{exhibition.node.exhibition_subtitle}</h2>
                                     </Link>
@@ -95,7 +99,9 @@ const ExhibitionsPage = (props) => {
                         <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
                             <Link className="link" to={exhibition.node.path}>
                                 <p className="date-small">{exhibition.node.acf.starting_date} – {exhibition.node.acf.ending_date}</p>
-                                <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
+                                {exhibition.node.acf.fullwidth_image != null &&
+                                    <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
+                                }
                                 <h1>{exhibition.node.title}</h1>
                                 <h2>{exhibition.node.exhibition_subtitle}</h2>
                             </Link> 

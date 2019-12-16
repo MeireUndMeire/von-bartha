@@ -13,8 +13,10 @@ const NavExtended = styled.div`
   white-space: nowrap;
   width: 100vw;
   height: 45px;
-  margin-top: -40px;
+  margin-top: calc(-40px - 20px) ;
   transition: .2s;
+  background-color: #D8D8D8;
+  padding: .5rem;
   &.openNav {
     margin-top: 0;
   }
@@ -40,9 +42,9 @@ const StyledNavItems = styled(Link)`
 const NavHome = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5.714vw;
+  margin: 1rem 0 5.714vw;
   #nav-burger span:nth-child(1) {
-    top: calc(50% + 0px);
+    top: 0px;
     -webkit-transform-origin: left center;
     -moz-transform-origin: left center;
     -o-transform-origin: left center;
@@ -50,7 +52,7 @@ const NavHome = styled.div`
   }
 
   #nav-burger span:nth-child(2) {
-    top: calc(50% + 15px);
+    top: 15px;
     -webkit-transform-origin: left center;
     -moz-transform-origin: left center;
     -o-transform-origin: left center;
@@ -62,7 +64,7 @@ const NavHome = styled.div`
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
-    top: calc(50% + -6px);
+    top: -6px;
   }
 
 
@@ -71,12 +73,17 @@ const NavHome = styled.div`
     -moz-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    top: calc(50% + px);
+    top: 15px;
   }
 
   #nav-burger {
     width: 30px;
     height: 40px;
+    margin-top: 2px;
+    @media only screen and (max-width: 767px) {
+      height: 16px;
+      margin-top: 7px;
+    }
     position: relative;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -136,7 +143,7 @@ export default ({ children }) => {
         <GlobalFonts />
         <GlobalStyle />
   
-        <NavExtended className="fullWidth removeScrollbar" className={navOpen ? "openNav" : ""}>
+        <NavExtended className={`fullWidth removeScrollbar ${navOpen ? "openNav" : ""}`}>
           <div className="navExtendedWrapper">
             {/* exhibitions */}
             <StyledNavItems
