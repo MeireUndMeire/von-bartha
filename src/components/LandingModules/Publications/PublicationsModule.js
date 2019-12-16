@@ -68,7 +68,7 @@ const PublicationsModule = (props) => {
   .caption > p {
     font-family: 'Trade-Gothic';
     font-size: 1rem;
-    line-height: 1rem;
+    line-height: 20px;
     margin-bottom: 5px;
   }
 `

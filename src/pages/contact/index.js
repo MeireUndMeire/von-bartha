@@ -59,7 +59,7 @@ const About = styled.div`
         margin-top: 10px;
         font-family: 'Trade-Gothic';
         font-size: 1rem;
-        line-height: 1rem;
+        line-height: 20px;
         margin-bottom: 5px;
     }
 `
