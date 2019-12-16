@@ -1,5 +1,5 @@
 
-import React, { useState } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import Flickity from 'react-flickity-component'
 import styled from 'styled-components'
@@ -8,8 +8,6 @@ const PublicationsModule = (props) => {
 
   const publicationsModule = props.edges
 
-  const [hovered, setHovered] = useState(false);
-  const toggleHover = () => setHovered(!hovered);
 
   const flickityOptions = {
     initialIndex: 0,
@@ -32,10 +30,6 @@ const PublicationsModule = (props) => {
     .publicationsList {
       padding: 5rem 0 5rem;
     }
-  `
-
-  const Caption = styled.div`
-
   `
 
   const Gallery = styled.div`

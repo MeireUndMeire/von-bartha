@@ -101,7 +101,7 @@ const PublicationsPage = (props) => {
                             case "Report":
                             return (
                                 <PublicationItem className="two-grid-item" key={index}>
-                                    <a href={publication.node.acf.report_image.source_url} download target="_blank" rel="noopener noreferrer">
+                                    <a href={publication.node.acf.download.source_url} download target="_blank" rel="noopener noreferrer">
                                         <div className="imageWrapper" style={{backgroundColor: publication.node.acf.custom_color === false ? publication.node.acf.color_scheme : publication.node.acf.background_color,
                                                                             backgroundImage: `url(${publication.node.acf.report_image.source_url})`}}>
                                             <div className="textWrapper"><h2>Download PDF</h2></div>
