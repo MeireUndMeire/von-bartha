@@ -132,7 +132,7 @@ const ExhibitionsModule = (props) => {
                   resultAmountSoon++,
                   <ExhibitionItem key={exhibition.node.id}>
                       <Link className="link" to={exhibition.node.path}>
-                          <div className="imageWrapper" style={{backgroundImage: `url(${exhibition.node.acf.fullwidth_image})`}}>
+                          <div className="imageWrapper" style={{backgroundImage: `url(${exhibition.node.acf.fullwidth_image.source_url})`}}>
                             <div className="textWrapper"><h1 >{exhibition.node.title}</h1></div>
                           </div>
                           <div className="itemInfoWrapper">
