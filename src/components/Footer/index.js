@@ -6,6 +6,9 @@ import styled from "styled-components"
 const Contact = styled.div`
   padding-bottom: 10vw;
   width: 70%;
+  h2 {
+    text-transform: none;
+  }
   a:visited, a {
     color: #FFF;
   }
@@ -19,7 +22,7 @@ const Table = styled.div`
 
   padding-bottom: 10vw;
 
-  font-size: 10px;
+  font-size: 12px;
   text-transform: capitalize;
 
   a:visited, a {
@@ -29,6 +32,11 @@ const Table = styled.div`
 `
 
 const FooterWrapper = styled.div`
+  &.footerWrapper {
+    &::selection {
+      color: green;
+    }
+  }
   padding: 1vw 1vw 10vw;
   @media only screen and (max-width: 767px) {
     padding-bottom: 2vw;
@@ -63,7 +71,7 @@ export default () => (
       }
     `}
     render={data => (
-      <FooterWrapper>
+      <FooterWrapper className="footerWrapper">
         <Contact>   
           <h2>{data.wordpressAcfOptions.options.contact.contact_text}</h2>
           <h2>{data.wordpressAcfOptions.options.contact.phone}</h2>
