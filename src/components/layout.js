@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GlobalFonts from '../fonts/fonts'
 import GlobalStyle from '../components/GlobalStyle'
 import styled from 'styled-components'
@@ -8,12 +8,16 @@ import Footer from '../components/Footer'
 
 
 const NavExtended = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  flex-direction: flex-start;
-  width: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: 100vw;
+  height: 45px;
+  margin-top: -40px;
+  transition: .2s;
+  &.openNav {
+    margin-top: 0;
+  }
 `
 
 const Subtitle = styled.div`
@@ -24,6 +28,7 @@ const Subtitle = styled.div`
 `
 
 const StyledNavItems = styled(Link)`
+  display: inline-block;
   :not(:first-child) {
     margin-left: 20px;
   }
@@ -36,6 +41,72 @@ const NavHome = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 5.714vw;
+  #nav-burger span:nth-child(1) {
+    top: calc(50% + 0px);
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+  }
+
+  #nav-burger span:nth-child(2) {
+    top: calc(50% + 15px);
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+  }
+
+  #nav-burger.open span:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: calc(50% + -6px);
+  }
+
+
+  #nav-burger.open span:nth-child(2) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: calc(50% + px);
+  }
+
+  #nav-burger {
+    width: 30px;
+    height: 40px;
+    position: relative;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    span {
+      display: block;
+      position: absolute;
+      height: 5px;
+      width: 100%;
+      background: #1D1D1B;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      -webkit-transition: .25s ease-in-out;
+      -moz-transition: .25s ease-in-out;
+      -o-transition: .25s ease-in-out;
+      transition: .25s ease-in-out;
+    }
+  }
+
 `
 
 const FooterWrapper = styled.footer`
@@ -50,14 +121,22 @@ const Contact = styled.div`
 
 `
 
-export default ({ children }) => (
+export default ({ children }) => {
 
+    const [navOpen, setNav] = useState(false);
+
+    function toggleNav() {
+      if (!navOpen) setNav(true)
+      else setNav(false)
+    }
+
+    return (
     <div>
       <div className="layout">
         <GlobalFonts />
         <GlobalStyle />
   
-        <NavExtended className="fullWidth">
+        <NavExtended className="fullWidth removeScrollbar" className={navOpen ? "openNav" : ""}>
           <div className="navExtendedWrapper">
             {/* exhibitions */}
             <StyledNavItems
@@ -87,11 +166,21 @@ export default ({ children }) => (
               className="navLink">Agenda
             </StyledNavItems>
 
+            {/* Contact */}
+            <StyledNavItems
+              activeClassName="active" 
+              to="/contact"
+              className="navLink">Contact
+            </StyledNavItems>
+
           </div>
         </NavExtended>
 
         <NavHome>
-          <div></div>
+          <div id="nav-burger" onClick={toggleNav} className={navOpen ? "open" : ""}>
+            <span></span>
+            <span></span>
+          </div>
           <div className="home">
             <Link to="/" className="navLink home">Von Bartha</Link>
             <Subtitle>EST. 1970</Subtitle>
@@ -104,4 +193,5 @@ export default ({ children }) => (
         <Footer />
       </FooterWrapper>
     </div>
-)
+    )
+}
