@@ -19,11 +19,18 @@ const Social = styled.div`
     }
   }
   h2 {
-    color: #D8D8D8;
-    margin-left: 3vw;
+    color: #BCCABA;
+    margin-left: 8vw;
   }
   .wrapper {
     display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    margin-left: 0;
+    h2 {
+      margin-right: 8vw;
+    }
   }
 `
 
@@ -35,7 +42,7 @@ const SocialModule = (props) => {
   return (
     <Social className="fullWidth">
       <h2>Connect with us.</h2>
-      <div className="wrapper">
+      <div className="wrapper fullWidth">
         <a href={`${social.instagram}`} target="_blank" rel="noopener noreferrer"><h2>Instagram</h2></a>
         <a href={`${social.facebook}`} target="_blank" rel="noopener noreferrer"><h2>Facebook</h2></a>
         <a href={`${social.twitter}`} target="_blank" rel="noopener noreferrer"><h2>Twitter</h2></a>
