@@ -138,6 +138,7 @@ export const pageQuery = graphql`
     allWordpressWpArtists {
       edges {
         node {
+          slug
           acf {
             artist_name
             preview_image {
@@ -167,15 +168,7 @@ export const pageQuery = graphql`
       edges {
         node {
           acf {
-            artists_book_name
-            report_title
-            type_of_publication
-            artists_book_image {
-              source_url
-            }
-            report_image {
-              source_url
-            }
+            ...AcfPublication
           }
         }
       }

@@ -73,4 +73,28 @@ export const eventFragment = graphql`
   }
 `
 
+export const publicationFragment = graphql`
+  fragment AcfPublication on wordpress__wp_publicationsAcf {
+    artists_book_name
+    color_scheme
+    custom_color
+    email
+    report_image {
+      title
+      source_url
+    }
+    download {
+      source_url
+    }
+    report_title
+    type_of_publication
+    artists_book_image {
+      title
+      source_url
+    }
+    background_color
+  }
+`
+
+
             
