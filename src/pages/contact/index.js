@@ -26,12 +26,13 @@ const Page = styled.div`
         padding: 1vw 1vw 4vw;
     }
     .overviewHeading {
+        padding-top: 5vw;
         text-align: center;
     }
 `
 
 const Contact = styled.div`
-    margin-bottom: 20vw;
+    margin-bottom: 10vw;
     h2 {
         width: 70%;
     }
@@ -61,6 +62,9 @@ const About = styled.div`
         font-size: 1rem;
         line-height: 20px;
         margin-bottom: 5px;
+    }
+    .overviewHeading {
+        padding-bottom: 0;
     }
 `
 
