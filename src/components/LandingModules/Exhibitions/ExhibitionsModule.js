@@ -25,6 +25,12 @@ const OnViewWrapper = styled.div`
     &.show {
       display: flex;
     }
+    &.past {
+      padding-bottom: 10vw;
+      .two-grid-item {
+        margin-bottom: 0;
+      }
+    }
     .imageWrapper {
         width: 100vw;
         position: relative;
@@ -149,7 +155,7 @@ const ExhibitionsModule = (props) => {
       </OnViewWrapper>
     
       {/* past */}
-      <OnViewWrapper className="OnViewWrapper" className={value === 0 ? 'show' : 'hide'}>
+      <OnViewWrapper className="OnViewWrapper past" className={`past ${value === 0 ? 'show' : 'hide'}`}>
       {allExhibitions.edges.map(exhibition => {
           const currentStatus = today - exhibition.node.acf.startingDateNoFormat
           const duration = exhibition.node.acf.endingDateNoFormat - exhibition.node.acf.startingDateNoFormat
