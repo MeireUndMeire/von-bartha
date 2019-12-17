@@ -152,7 +152,7 @@ const ContactAboutPage = (props) => {
                             aboutModule.image !== undefined ? 
                             (
                             <div key={index} className="imageWrapper">
-                                <img alt={index} src={aboutModule.image}/>
+                                <img alt={index} src={aboutModule.image.source_url}/>
                                 <div className="caption" dangerouslySetInnerHTML={{ __html: aboutModule.caption }}></div>
                             </div>
                             )
@@ -220,7 +220,9 @@ export const contactAboutQuery = graphql`
                 ... on WordPressAcf_image_module {
                   id
                   caption
-                  image 
+                  image {
+                      source_url
+                  }
                 }
                 ... on WordPressAcf_textblock_module {
                   id
