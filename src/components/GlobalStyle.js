@@ -161,7 +161,7 @@ const GlobalStyle = createGlobalStyle`
   .backLink {
     display: inline-block;
     width: fit-content;
-    margin: 10px 0 80px;
+    margin: 10px 0 10vw;
     @media only screen and (max-width: 768px) {
       margin: 10px 0 40px;
     }
