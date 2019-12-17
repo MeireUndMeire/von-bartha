@@ -20,6 +20,12 @@ const NavExtended = styled.div`
   &.openNav {
     margin-top: 0;
   }
+  .navExtendedWrapper {
+    width: fit-content;
+    &:last-child {
+      padding-right: 2vw;
+    }
+  } 
 `
 
 const Subtitle = styled.div`
@@ -100,7 +106,6 @@ const NavHome = styled.div`
       height: 5px;
       width: 100%;
       background: #1D1D1B;
-      border-radius: 9px;
       opacity: 1;
       left: 0;
       -webkit-transform: rotate(0deg);
