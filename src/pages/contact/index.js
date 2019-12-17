@@ -17,13 +17,16 @@ const Wrapper = styled.div`
 
 const Staff = styled.div`
     padding: 10px 0 40px;
+    h1.overviewHeading {
+        padding-top: 0;
+    }
 `
 
 const Page = styled.div`
     .fullWidth {
         width: 98vw;
         max-height: none;
-        padding: 1vw 1vw 4vw;
+        padding: 1vw 1vw 7vw;
     }
     .overviewHeading {
         padding-top: 5vw;
@@ -39,6 +42,7 @@ const Contact = styled.div`
 `
 
 const About = styled.div`
+    padding-bottom: 10vw;
     h1 {
         text-align: center;
     }
@@ -79,7 +83,7 @@ const Locations = styled.div`
         font-size: 5.714vw;
         font-weight: 400;
         line-height: 5.714vw;
-        text-transform: capitalize;
+        text-transform: none;
     }
 `
 
