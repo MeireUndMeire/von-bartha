@@ -103,7 +103,7 @@ const PublicationsPage = (props) => {
                                 <PublicationItem className="two-grid-item" key={index}>
                                     <a href={publication.node.acf.download.source_url} download target="_blank" rel="noopener noreferrer">
                                         <div className="imageWrapper" style={{backgroundColor: publication.node.acf.custom_color === false ? publication.node.acf.color_scheme : publication.node.acf.background_color,
-                                                                            backgroundImage: `url(${publication.node.acf.report_image.source_url})`}}>
+                                                                            backgroundImage: `url(${publication.node.acf.report_image === null ? '' : publication.node.acf.report_image.source_url})`}}>
                                             <div className="textWrapper"><h2>Download PDF</h2></div>
                                         </div>
                                         <h1>{publication.node.acf.report_title}</h1>
@@ -134,24 +134,7 @@ export const publicationsQuery = graphql`
           node {
             id
             acf {
-              artists_book_name
-              color_scheme
-              custom_color
-              email
-              report_image {
-                title
-                source_url
-              }
-              download {
-                source_url
-              }
-              report_title
-              type_of_publication
-              artists_book_image {
-                title
-                source_url
-              }
-              background_color
+            ...AcfPublication
             }
           }
         }
