@@ -53,7 +53,7 @@ const ExhibitionsPage = (props) => {
                                 {exhibition.node.acf.fullwidth_image != null &&
                                 <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
                                 }
-                                <h1>{exhibition.node.title}</h1>
+                                <h1 dangerouslySetInnerHTML={{ __html:exhibition.node.title}} />
                                 <h2>{exhibition.node.exhibition_subtitle}</h2>
                             </Link>
                         </ExhibitionItem>
@@ -77,7 +77,7 @@ const ExhibitionsPage = (props) => {
                                         {exhibition.node.acf.fullwidth_image != null &&
                                             <img alt={index} src={exhibition.node.acf.fullwidth_image.source_url} />
                                         }
-                                        <h1>{exhibition.node.title}</h1>
+                                        <h1 dangerouslySetInnerHTML={{ __html:exhibition.node.title}} />
                                         <h2>{exhibition.node.exhibition_subtitle}</h2>
                                     </Link>
                                 
@@ -102,7 +102,7 @@ const ExhibitionsPage = (props) => {
                                 {exhibition.node.acf.fullwidth_image != null &&
                                     <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
                                 }
-                                <h1>{exhibition.node.title}</h1>
+                                <h1 dangerouslySetInnerHTML={{ __html:exhibition.node.title}} />
                                 <h2>{exhibition.node.exhibition_subtitle}</h2>
                             </Link> 
                         </ExhibitionItem>
