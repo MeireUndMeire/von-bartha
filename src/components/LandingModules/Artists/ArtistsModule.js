@@ -35,8 +35,9 @@ const ArtistsModule = (props) => {
         pointer-events: none;
         display: none;
         position: absolute;
-        max-height: 60vh;
+        max-height: 70vh;
         max-width: 60vw;
+        object-fit: contain;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -44,7 +45,7 @@ const ArtistsModule = (props) => {
       }
     }
     .artistList {
-      padding: 10px 0 5vw;
+      padding: 3vw 0 5vw;
     }
   `
 
@@ -58,7 +59,7 @@ const ArtistsModule = (props) => {
         {artistModule.map((artist, index) => (
           <div className="artist" key={index}>
             <div className="artist-name">
-              <h2>{artist.node.acf.artist_name}</h2>
+              <Link to={`/artists/${artist.node.slug}`}><h2>{artist.node.acf.artist_name}</h2></Link>
               <img alt={index} src={artist.node.acf.preview_image === null ? artist.node.acf.fullwidth_image.source_url : artist.node.acf.preview_image.source_url} />
             </div>
           </div>
