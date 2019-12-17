@@ -37,7 +37,7 @@ const OnViewWrapper = styled.div`
         background-size: 100%;
         background-position: center;
         background-repeat: no-repeat;
-        height: 60vw;
+        height: 66vw;
         margin-left: -1vw;
         @media only screen and (max-width: 767px) {
           width: 96vw;

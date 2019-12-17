@@ -31,16 +31,6 @@ const PressItem = styled.div`
     .date-small {
         margin: 0;
     }
-    .imageWrapper {
-        position: relative;
-        background-size: auto 80%;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 40vh;
-        @media only screen and (max-width: 767px) {
-            background-size: 50%;
-        }
-    }
     .p2 {
 
         h1 {

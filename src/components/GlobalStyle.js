@@ -88,7 +88,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     img {
-      height: 40vh;
+      height: 33.3vw;
       object-fit: cover;
     }
   }

@@ -28,7 +28,7 @@ const PublicationItem = styled.div`
         background-size: auto 80%;
         background-position: center;
         background-repeat: no-repeat;
-        height: 40vh;
+        height: 33.3vw;
         @media only screen and (max-width: 767px) {
             background-size: 50%;
         }
