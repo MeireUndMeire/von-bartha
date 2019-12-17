@@ -67,13 +67,6 @@ const PublicationsModule = (props) => {
   }
 `
 
-  function over(e){
-    e.target.style.display="block";
-  }
-  function out(e){
-    e.target.style.display="none";
-  }
-
   return (
     <PublicationsList>
       <div className="titleWrapper">
