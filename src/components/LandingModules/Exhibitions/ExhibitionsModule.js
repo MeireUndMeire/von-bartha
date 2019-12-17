@@ -47,12 +47,12 @@ const OnViewWrapper = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-
+        flex-direction: column;
         text-align: center;
         width: 100%;
         height: 100%;
         
-        h1 {
+        h1, h2 {
             text-align: center;
             padding: 0 20%;
             text-transform: none;
@@ -61,6 +61,14 @@ const OnViewWrapper = styled.div`
     }
     .itemInfoWrapper {
       margin-top: 10px;
+    }
+    .seeAll {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      h2 {
+        width: fit-content;
+      }
     }
 `
 
@@ -115,10 +123,14 @@ const ExhibitionsModule = (props) => {
                   <ExhibitionItem key={exhibition.node.id}>
                       <Link className="link" to={exhibition.node.path}>
                           <div className="imageWrapper" style={{backgroundImage: `url(${exhibition.node.acf.fullwidth_image.source_url})`}}>
-                            <div className="textWrapper"><h1 >{exhibition.node.title}</h1></div>
+                            <div className="textWrapper">
+                            <h1>{exhibition.node.title}</h1>
+                            {exhibition.node.acf.exhibition_subtitle !== null &&
+                              <h2>{exhibition.node.acf.exhibition_subtitle}</h2>
+                            }
+                            </div>
                           </div>
                           <div className="itemInfoWrapper">
-                            <h2>{exhibition.node.acf.exhibition_subtitle}</h2>
                             <h2>{exhibition.node.acf.starting_date} – {exhibition.node.acf.ending_date}</h2>
                             <h2>{exhibition.node.acf.exhibition_location}</h2>
                           </div>
@@ -140,10 +152,13 @@ const ExhibitionsModule = (props) => {
                   <ExhibitionItem key={exhibition.node.id}>
                       <Link className="link" to={exhibition.node.path}>
                           <div className="imageWrapper" style={{backgroundImage: `url(${exhibition.node.acf.fullwidth_image.source_url})`}}>
-                            <div className="textWrapper"><h1 >{exhibition.node.title}</h1></div>
+                            <div className="textWrapper"><h1 >{exhibition.node.title}</h1>
+                            {exhibition.node.acf.exhibition_subtitle !== null &&
+                              <h2>{exhibition.node.acf.exhibition_subtitle}</h2>
+                            }
+                            </div>
                           </div>
                           <div className="itemInfoWrapper">
-                            <h2>{exhibition.node.acf.exhibition_subtitle}</h2>
                             <h2>{exhibition.node.acf.starting_date} – {exhibition.node.acf.ending_date}</h2>
                             <h2>{exhibition.node.acf.exhibition_location}</h2>
                           </div>
@@ -175,6 +190,7 @@ const ExhibitionsModule = (props) => {
               )
           }
       })}
+      <div className="seeAll"><Link to="/exhibitions"><h2 className="underline">see all</h2></Link></div>
       </OnViewWrapper>
     </ExhibitionModule>
   )
