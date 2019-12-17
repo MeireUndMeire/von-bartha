@@ -26,12 +26,13 @@ const OnViewWrapper = styled.div`
       display: flex;
     }
     .imageWrapper {
-        width: 98vw;
+        width: 100vw;
         position: relative;
         background-size: 100%;
         background-position: center;
         background-repeat: no-repeat;
         height: 60vw;
+        margin-left: -1vw;
         @media only screen and (max-width: 767px) {
           width: 96vw;
         }
@@ -155,17 +156,15 @@ const ExhibitionsModule = (props) => {
           if (currentStatus >= 0 && currentStatus > duration && resultAmountPast <= maxResults) {
               return (
                   resultAmountPast++,
-                  <ExhibitionItem key={exhibition.node.id}>
-                      <Link className="link" to={exhibition.node.path}>
-                          <div className="imageWrapper" style={{backgroundImage: `url(${exhibition.node.acf.fullwidth_image.source_url})`}}>
-                            <div className="textWrapper"><h1 >{exhibition.node.title}</h1></div>
-                          </div>
-                          <div className="itemInfoWrapper">
-                            <h2>{exhibition.node.acf.exhibition_subtitle}</h2>
-                            <h2>{exhibition.node.acf.starting_date} – {exhibition.node.acf.ending_date}</h2>
-                            <h2>{exhibition.node.acf.exhibition_location}</h2>
-                          </div>
-                      </Link> 
+                  <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
+                    <Link className="link" to={exhibition.node.path}>
+                        <p className="date-small">Until {exhibition.node.acf.ending_date}</p>
+                        {exhibition.node.acf.fullwidth_image != null &&
+                        <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
+                        }
+                        <h1>{exhibition.node.title}</h1>
+                        <h2>{exhibition.node.exhibition_subtitle}</h2>
+                    </Link>
                   </ExhibitionItem>
               )
           }
