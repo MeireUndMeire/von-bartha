@@ -149,9 +149,6 @@ const NavWrapper = styled.div`
   top: 0;
   z-index: 27;
   transition: all 500ms ease-in-out;
-  &.hide {
-    transform: translateY(-6vw);
-  }
 `
 
 export default ({ children }) => {
@@ -174,8 +171,8 @@ export default ({ children }) => {
       <div className="layout">
         <GlobalFonts />
         <GlobalStyle />
-        <NavWrapper className={`navWrapper ${show ? '' : 'hide'}`}>
-          <NavExtended className={`fullWidth removeScrollbar ${navOpen ? "openNav" : ""}`}>
+        <NavWrapper className="navWrapper" style={{transform: show ? 'translateY(0)' : 'translateY(-6vw)'}}>
+          <NavExtended className="fullWidth removeScrollbar" style={{marginTop: navOpen ? '0' : '-6.297vw'}}>
             <div className="navExtendedWrapper">
               {/* exhibitions */}
               <StyledNavItems
