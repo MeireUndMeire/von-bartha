@@ -37,7 +37,7 @@ const PublicationItem = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-
+        background-color: rgba(255,255,255, 0.4);
         text-align: center;
         width: 100%;
         height: 100%;
