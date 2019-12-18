@@ -133,7 +133,7 @@ const NavHome = styled.div`
 `
 
 const PageContent = styled.div`
-  padding-top: 12vw;
+  padding-top: 20vw;
 `
 
 const FooterWrapper = styled.footer`
