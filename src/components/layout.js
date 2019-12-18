@@ -157,7 +157,7 @@ const NavWrapper = styled.div`
 export default ({ children }) => {
 
     const [navOpen, setNav] = useState(false);
-    const [show, setHideOnScroll] = useState(false)
+    const [show, setHideOnScroll] = useState(true)
 
     function toggleNav() {
       if (!navOpen) setNav(true)
