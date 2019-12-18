@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 
 import Footer from '../components/Footer'
-import Logo from '../components/Logo'
+import Logo from '../components/Icons/Logo'
 
 
 const NavExtended = styled.div`
