@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 
 import Footer from '../components/Footer'
+import Logo from '../components/Logo'
 
 
 const NavExtended = styled.div`
@@ -12,11 +13,11 @@ const NavExtended = styled.div`
   overflow-y: hidden;
   white-space: nowrap;
   width: 100vw;
-  height: 45px;
-  margin-top: calc(-40px - 20px) ;
+  height: 5.297vw;
+  margin-top: -6.297vw;
   transition: .2s;
   background-color: #D8D8D8;
-  padding: .5rem;
+  padding: 1vw 1vw 0 0.7vw;
   &.openNav {
     margin-top: 0;
   }
@@ -118,6 +119,10 @@ const NavHome = styled.div`
       transition: .25s ease-in-out;
     }
   }
+  .home {
+    width: 46vw;
+    height: 4vw;
+  }
 
 `
 
@@ -127,10 +132,6 @@ const FooterWrapper = styled.footer`
   font-family: 'Trade-Gothic';
   font-size: 2rem;
   text-transform: uppercase;
-`
-
-const Contact = styled.div`
-
 `
 
 export default ({ children }) => {
@@ -154,35 +155,35 @@ export default ({ children }) => {
             <StyledNavItems
               activeClassName="active" 
               to="/exhibitions"
-              className="navLink">Exhibitions
+              className="navLink"><h1>Exhibitions</h1>
             </StyledNavItems>
 
             {/* artists */}
             <StyledNavItems
               activeClassName="active" 
               to="/artists"
-              className="navLink">Artists
+              className="navLink"><h1>Artists</h1>
             </StyledNavItems>
 
             {/* Publications */}
             <StyledNavItems
               activeClassName="active" 
               to="/publications"
-              className="navLink">Publications
+              className="navLink"><h1>Publications</h1>
             </StyledNavItems>
 
             {/* Agenda */}
             <StyledNavItems
               activeClassName="active" 
               to="/agenda"
-              className="navLink">Agenda
+              className="navLink"><h1>Agenda</h1>
             </StyledNavItems>
 
             {/* Contact */}
             <StyledNavItems
               activeClassName="active" 
               to="/contact"
-              className="navLink">Contact
+              className="navLink"><h1>Contact</h1>
             </StyledNavItems>
 
           </div>
@@ -194,7 +195,9 @@ export default ({ children }) => {
             <span></span>
           </div>
           <div className="home">
-            <Link to="/" className="navLink home">Von Bartha</Link>
+            <Link to="/">
+              <Logo />
+            </Link>
             <Subtitle>EST. 1970</Subtitle>
           </div>
           <div></div>
