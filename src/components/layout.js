@@ -154,24 +154,24 @@ const NavWrapper = styled.div`
 export default ({ children }) => {
 
     const [navOpen, setNav] = useState(false);
-    const [show, setHideOnScroll] = useState(true)
+    // const [show, setHideOnScroll] = useState(true)
 
     function toggleNav() {
       if (!navOpen) setNav(true)
       else setNav(false)
     }
 
-    useScrollPosition(({ prevPos, currPos }) => {
-      const isShow = currPos.y > prevPos.y
-      if (isShow !== show) setHideOnScroll(isShow)
-    })
+    // useScrollPosition(({ prevPos, currPos }) => {
+    //   const isShow = currPos.y > prevPos.y
+    //   if (isShow !== show) setHideOnScroll(isShow)
+    // })
 
     return (
     <div>
       <div className="layout">
         <GlobalFonts />
         <GlobalStyle />
-        <NavWrapper className="navWrapper" style={{transform: show ? 'translate3d(0, 0, 0)' : 'translate3d(0, -6vw, 0)'}}>
+        <NavWrapper className="navWrapper">
           <NavExtended className="fullWidth removeScrollbar" style={{marginTop: navOpen ? '0' : '-6.297vw'}}>
             <div className="navExtendedWrapper">
               {/* exhibitions */}
