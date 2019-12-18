@@ -171,7 +171,7 @@ export default ({ children }) => {
       <div className="layout">
         <GlobalFonts />
         <GlobalStyle />
-        <NavWrapper className="navWrapper" style={{transform: show ? 'translateY(0)' : 'translateY(-6vw)'}}>
+        <NavWrapper className="navWrapper" style={{transform: show ? 'translate3d(0, 0, 0)' : 'translate3d(0, -6vw, 0)'}}>
           <NavExtended className="fullWidth removeScrollbar" style={{marginTop: navOpen ? '0' : '-6.297vw'}}>
             <div className="navExtendedWrapper">
               {/* exhibitions */}
