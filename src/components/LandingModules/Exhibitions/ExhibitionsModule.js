@@ -124,7 +124,7 @@ const ExhibitionsModule = (props) => {
                       <Link className="link" to={exhibition.node.path}>
                           <div className="imageWrapper" style={{backgroundImage: `url(${exhibition.node.acf.fullwidth_image.source_url})`}}>
                             <div className="textWrapper">
-                            <h1>{exhibition.node.title}</h1>
+                            <h1 dangerouslySetInnerHTML={{ __html:exhibition.node.title}} />
                             {exhibition.node.acf.exhibition_subtitle !== null &&
                               <h2>{exhibition.node.acf.exhibition_subtitle}</h2>
                             }
