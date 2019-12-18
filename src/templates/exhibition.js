@@ -90,10 +90,10 @@ const ExhibitionTemplate = (props) => {
           }
         </Titles>
         {exhibition.acf.fullwidth_image != null &&
-          <img className="fullWidth" alt="" src={exhibition.acf.fullwidth_image} />
+          <img className="fullWidth" alt="" src={exhibition.acf.fullwidth_image.source_url} />
         }
         <h2>
-          {exhibition.acf.fullwidth_image != null &&
+          {exhibition.acf.starting_date != null &&
             `${exhibition.acf.starting_date}`
           }
           {exhibition.acf.ending_date != null &&
