@@ -98,7 +98,7 @@ const ExhibitionsPage = (props) => {
                     return (
                         <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
                             <Link className="link" to={exhibition.node.path}>
-                                <p className="date-small">{exhibition.node.acf.starting_date} – {exhibition.node.acf.ending_date}</p>
+                                <p className="date-small">{`${exhibition.node.acf.starting_date} – ${exhibition.node.acf.ending_date}`}</p>
                                 {exhibition.node.acf.fullwidth_image != null &&
                                     <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
                                 }
