@@ -3,9 +3,12 @@ import GlobalFonts from '../fonts/fonts'
 import GlobalStyle from '../components/GlobalStyle'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 import Footer from '../components/Footer'
 import Logo from '../components/Icons/Logo'
+
+
 
 
 const NavExtended = styled.div`
@@ -49,7 +52,10 @@ const StyledNavItems = styled(Link)`
 const NavHome = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0 5.714vw;
+  background-color: #FFF;
+  padding: 1rem 0;
+  width: 98vw !important;
+  padding: 1vw;
   #nav-burger span:nth-child(1) {
     top: 0px;
     -webkit-transform-origin: left center;
@@ -126,6 +132,10 @@ const NavHome = styled.div`
 
 `
 
+const PageContent = styled.div`
+  padding-top: 12vw;
+`
+
 const FooterWrapper = styled.footer`
   background-color: #1D1D1B;
   color: #FFF;
@@ -134,75 +144,92 @@ const FooterWrapper = styled.footer`
   text-transform: uppercase;
 `
 
+const NavWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  z-index: 27;
+  transition: all 500ms ease-in-out;
+  &.hide {
+    transform: translateY(-6vw);
+  }
+`
+
 export default ({ children }) => {
 
     const [navOpen, setNav] = useState(false);
+    const [show, setHideOnScroll] = useState(false)
 
     function toggleNav() {
       if (!navOpen) setNav(true)
       else setNav(false)
     }
 
+    useScrollPosition(({ prevPos, currPos }) => {
+      const isShow = currPos.y > prevPos.y
+      if (isShow !== show) setHideOnScroll(isShow)
+    })
+
     return (
     <div>
       <div className="layout">
         <GlobalFonts />
         <GlobalStyle />
-  
-        <NavExtended className={`fullWidth removeScrollbar ${navOpen ? "openNav" : ""}`}>
-          <div className="navExtendedWrapper">
-            {/* exhibitions */}
-            <StyledNavItems
-              activeClassName="active" 
-              to="/exhibitions"
-              className="navLink"><h1>Exhibitions</h1>
-            </StyledNavItems>
+        <NavWrapper className={`navWrapper ${show ? '' : 'hide'}`}>
+          <NavExtended className={`fullWidth removeScrollbar ${navOpen ? "openNav" : ""}`}>
+            <div className="navExtendedWrapper">
+              {/* exhibitions */}
+              <StyledNavItems
+                activeClassName="active" 
+                to="/exhibitions"
+                className="navLink"><h1>Exhibitions</h1>
+              </StyledNavItems>
 
-            {/* artists */}
-            <StyledNavItems
-              activeClassName="active" 
-              to="/artists"
-              className="navLink"><h1>Artists</h1>
-            </StyledNavItems>
+              {/* artists */}
+              <StyledNavItems
+                activeClassName="active" 
+                to="/artists"
+                className="navLink"><h1>Artists</h1>
+              </StyledNavItems>
 
-            {/* Publications */}
-            <StyledNavItems
-              activeClassName="active" 
-              to="/publications"
-              className="navLink"><h1>Publications</h1>
-            </StyledNavItems>
+              {/* Publications */}
+              <StyledNavItems
+                activeClassName="active" 
+                to="/publications"
+                className="navLink"><h1>Publications</h1>
+              </StyledNavItems>
 
-            {/* Agenda */}
-            <StyledNavItems
-              activeClassName="active" 
-              to="/agenda"
-              className="navLink"><h1>Agenda</h1>
-            </StyledNavItems>
+              {/* Agenda */}
+              <StyledNavItems
+                activeClassName="active" 
+                to="/agenda"
+                className="navLink"><h1>Agenda</h1>
+              </StyledNavItems>
 
-            {/* Contact */}
-            <StyledNavItems
-              activeClassName="active" 
-              to="/contact"
-              className="navLink"><h1>Contact</h1>
-            </StyledNavItems>
+              {/* Contact */}
+              <StyledNavItems
+                activeClassName="active" 
+                to="/contact"
+                className="navLink"><h1>Contact</h1>
+              </StyledNavItems>
 
-          </div>
-        </NavExtended>
+            </div>
+          </NavExtended>
 
-        <NavHome>
-          <div id="nav-burger" onClick={toggleNav} className={navOpen ? "open" : ""}>
-            <span></span>
-            <span></span>
-          </div>
-          <div className="home">
-            <Link to="/">
-              <Logo />
-            </Link>
-            <Subtitle>EST. 1970</Subtitle>
-          </div>
-          <div></div>
-        </NavHome>
-        <div className="pageContent">{children}</div>
+          <NavHome className="fullWidth">
+            <div id="nav-burger" onClick={toggleNav} className={navOpen ? "open" : ""}>
+              <span></span>
+              <span></span>
+            </div>
+            <div className="home">
+              <Link to="/">
+                <Logo />
+              </Link>
+              {/* <Subtitle>EST. 1970</Subtitle> */}
+            </div>
+            <div></div>
+          </NavHome>
+        </NavWrapper>
+        <PageContent>{children}</PageContent>
       </div>
       <FooterWrapper>
         <Footer />
