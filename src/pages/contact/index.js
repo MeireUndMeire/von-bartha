@@ -38,6 +38,7 @@ const Contact = styled.div`
     margin-bottom: 10vw;
     h2 {
         width: 70%;
+        text-transform: none;
     }
 `
 
@@ -73,10 +74,11 @@ const About = styled.div`
 `
 
 const Locations = styled.div`
-    .second p {
+    .second.caption p {
         margin-top: 10px;
         font-size: 18px;
         line-height: 18px;
+        font-family: 'Trade-Gothic';
     }
     .additionalInfo p {
         font-family: 'Trade-Gothic';
@@ -145,7 +147,7 @@ const ContactAboutPage = (props) => {
                                     <a href={`${location.location_link}`} target="_blank" rel="noopener noreferrer">
                                         <img className="first" alt={location.location_map.title} src={location.location_map.source_url} />
                                     </a>
-                                    <p className="second" dangerouslySetInnerHTML={{ __html: location.location_description }}></p>      
+                                    <p className="second caption" dangerouslySetInnerHTML={{ __html: location.location_description }}></p>      
                                 </LocationItem>
                                 <div className="additionalInfo" dangerouslySetInnerHTML={{ __html: location.location_additional_info }}></div>
                             </Wrapper>
