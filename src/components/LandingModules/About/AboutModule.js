@@ -22,9 +22,9 @@ const About = styled.div`
   }
   h2 > p {
     font-family: 'Trade-Gothic';
-    font-size: 5.714vw;
+    font-size: 5.297vw;
     font-weight: 400;
-    line-height: 5.714vw;
+    line-height: 5.297vw;
     text-transform: none;;
   }
   .right {
