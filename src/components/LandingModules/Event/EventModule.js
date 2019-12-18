@@ -31,7 +31,6 @@ const Event = styled.div`
       img {
         max-width: 50vw;
         @media only screen and (max-width: 767px) {
-          max-height: 60vh;
           width: 60vw;
         }
       }
