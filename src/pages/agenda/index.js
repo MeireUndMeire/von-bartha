@@ -33,88 +33,118 @@ const AgendaPage = (props) => {
     const allEvents = props.data.allWordpressWpEvents.edges
     let today = moment(new Date()).format('YYYYMMDD')
 
+    let nowEvents = [];
+    let pastEvents = [];
+    let soonEvents = [];
+
+    console.log()
+
     return (
 
         <Layout>
             <Header>Agenda</Header>
 
-            {/* on view */}
-            <Heading className="overviewHeading"><h1>now</h1></Heading>
-            <OnViewWrapper className="OnViewWrapper">
-            {allEvents.map(event => {
+            {allEvents.map( event => {
                 const currentStatus = today - event.node.acf.startingDateNoFormat
                 const duration = event.node.acf.endingDateNoFormat - event.node.acf.startingDateNoFormat
-                if (currentStatus >= 0 && currentStatus <= duration) {
-                    return (
-                     <EventItem className="two-grid-item" key={event.node.id}>
-                                <Link className="link" to={event.node.path}>
-                                    <p className="date-small">Until {event.node.acf.ending_date}</p>
-                                    {event.node.acf.fullwidth_image != null &&
-                                        <img alt={event.node.acf.fullwidth_image} src={event.node.acf.fullwidth_image} />
-                                    }
-                                    <h1>{event.node.acf.event_name}</h1>
-                                    {event.node.acf.event_subtitle != null &&
-                                    <h2>{event.node.acf.event_subtitle}</h2>
-                                    }
-                                </Link>
-                    </EventItem>
-                    )
-                }
-            })}
-            </OnViewWrapper>
+                if( currentStatus >= 0 && currentStatus <= duration ) {
+                    nowEvents.push( event )
+                } else if( currentStatus < 0  ) {
+                    soonEvents.push( event )
+                } else if(currentStatus >= 0 && currentStatus > duration) {
+                    pastEvents.push( event )
+                    } 
+                })
+            }
+
+            {/* on view */}
+            {nowEvents.length !== 0 &&
+                <div>
+                    <Heading className="overviewHeading"><h1>now</h1></Heading>
+                    <OnViewWrapper className="OnViewWrapper">
+                    {allEvents.map(event => {
+                        const currentStatus = today - event.node.acf.startingDateNoFormat
+                        const duration = event.node.acf.endingDateNoFormat - event.node.acf.startingDateNoFormat
+                        if (currentStatus >= 0 && currentStatus <= duration) {
+                            return (
+                            <EventItem className="two-grid-item" key={event.node.id}>
+                                        <Link className="link" to={event.node.path}>
+                                            <p className="date-small">Until {event.node.acf.ending_date}</p>
+                                            {event.node.acf.fullwidth_image != null &&
+                                                <img alt={event.node.acf.fullwidth_image.source_url} src={event.node.acf.fullwidth_image.source_url} />
+                                            }
+                                            <h1>{event.node.acf.event_name}</h1>
+                                            {event.node.acf.event_subtitle != null &&
+                                            <h2>{event.node.acf.event_subtitle}</h2>
+                                            }
+                                        </Link>
+                            </EventItem>
+                            )
+                        }
+                    })}
+                    </OnViewWrapper>
+                </div>
+            }
 
             {/* soon */}
-            <Heading className="overviewHeading"><h1>soon</h1></Heading>
-            <OnViewWrapper className="OnViewWrapper">
-            {allEvents.map(event => {
-                const currentStatus = today - event.node.acf.startingDateNoFormat
-                if (currentStatus < 0 ) {
-                    return(
-                     <EventItem className="two-grid-item" key={event.node.id}>
-                                
-                                {/* {event.node.acf.starting_date ? 'undefined' : 'not'} */}
-                                <Link className="link" to={event.node.path}>
-                                    <p className="date-small">{event.node.acf.starting_date}</p>
-                                    {event.node.acf.fullwidth_image != null &&
-                                        <img alt={event.node.acf.fullwidth_image} src={event.node.acf.fullwidth_image} />
-                                    }
-                                    <h1>{event.node.acf.event_name}</h1>
-                                    {event.node.acf.event_subtitle != null &&
-                                        <h2>{event.node.acf.event_subtitle}</h2>
-                                    }
-                                </Link>
-                            
-                    </EventItem>
-                    )
-                }
-            })}
-            </OnViewWrapper>
+            {soonEvents.length !== 0 &&
+                <div>
+                    <Heading className="overviewHeading"><h1>soon</h1></Heading>
+                    <OnViewWrapper className="OnViewWrapper">
+                    {allEvents.map(event => {
+                        const currentStatus = today - event.node.acf.startingDateNoFormat
+                        if (currentStatus < 0 ) {
+                            return(
+                            <EventItem className="two-grid-item" key={event.node.id}>
+                                        
+                                        <Link className="link" to={event.node.path}>
+                                            <p className="date-small">{event.node.acf.starting_date}</p>
+                                            {event.node.acf.fullwidth_image != null &&
+                                                <img alt={event.node.acf.fullwidth_image.source_url} src={event.node.acf.fullwidth_image.source_url} />
+                                            }
+                                            <h1>{event.node.acf.event_name}</h1>
+                                            {event.node.acf.event_subtitle != null &&
+                                                <h2>{event.node.acf.event_subtitle}</h2>
+                                            }
+                                        </Link>
+                                    
+                            </EventItem>
+                            )
+                        }
+                    })}
+                    </OnViewWrapper>
+                </div>
+            }
             
 
             {/* past */}
-            <Heading className="overviewHeading"><h1>past</h1></Heading>
-            <OnViewWrapper className="OnViewWrapper">
-            {allEvents.map(event => {
-                const currentStatus = today - event.node.acf.startingDateNoFormat
-                const duration = event.node.acf.endingDateNoFormat - event.node.acf.startingDateNoFormat
-                if (currentStatus >= 0 && currentStatus > duration) {
-                    return (
-                        <EventItem className="two-grid-item" key={event.node.id}>
-                            <Link className="link" to={event.node.path}>
-                                <p className="date-small">{event.node.acf.starting_date} – {event.node.acf.ending_date}</p>
-                                {event.node.acf.fullwidth_image != null &&
-                                    <img alt={event.node.acf.fullwidth_image} src={event.node.acf.fullwidth_image} />
-                                }
-                                <h1>{event.node.acf.event_name}</h1>
-                                {event.node.acf.event_subtitle != null &&
-                                    <h2>{event.node.acf.event_subtitle}</h2>
-                                }
-                            </Link> 
-                        </EventItem>
-                    )
-                }
-            })}
-            </OnViewWrapper>
+            {pastEvents.length > 0 &&
+                <div>
+                    <Heading className="overviewHeading"><h1>past</h1></Heading>
+                    <OnViewWrapper className="OnViewWrapper">
+                    {allEvents.map(event => {
+                        const currentStatus = today - event.node.acf.startingDateNoFormat
+                        const duration = event.node.acf.endingDateNoFormat - event.node.acf.startingDateNoFormat
+                        if (currentStatus >= 0 && currentStatus > duration) {
+                            return (
+                                <EventItem className="two-grid-item" key={event.node.id}>
+                                    <Link className="link" to={event.node.path}>
+                                        <p className="date-small">{event.node.acf.starting_date} – {event.node.acf.ending_date}</p>
+                                        {event.node.acf.fullwidth_image != null &&
+                                            <img alt={event.node.acf.fullwidth_image.source_url} src={event.node.acf.fullwidth_image.source_url} />
+                                        }
+                                        <h1>{event.node.acf.event_name}</h1>
+                                        {event.node.acf.event_subtitle != null &&
+                                            <h2>{event.node.acf.event_subtitle}</h2>
+                                        }
+                                    </Link> 
+                                </EventItem>
+                            )
+                        }
+                    })}
+                    </OnViewWrapper>
+                </div>
+            }
             
             <Back>
                 <Link to="/" className="backLink"><h2>&#8592; Back</h2></Link>
