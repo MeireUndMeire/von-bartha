@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Flickity from 'react-flickity-component'
 
 import Layout from "../components/layout"
+import Arrow from '../components/Icons/Arrow'
 
 const Gallery = styled.div`
   margin-bottom: 8rem;
@@ -141,7 +142,7 @@ const ExhibitionTemplate = (props) => {
                 </div>
               } 
         </Linkss>
-        <Link className="backLink" to="/exhibitions"><h2>&#8592; all exhibitions</h2></Link>
+        <Link className="backLink" to="/exhibitions"><h2><Arrow width={100} height={100} /> all exhibitions</h2></Link>
       </div>
     </Layout>
   )

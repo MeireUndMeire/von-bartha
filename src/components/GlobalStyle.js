@@ -106,7 +106,7 @@ const GlobalStyle = createGlobalStyle`
         height: 80px; 
       }
       width: fill-available;
-      height: 150px;
+      height: calc(5.297vw * 3) ;
     }
   }
 
@@ -164,6 +164,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 10px 0 10vw;
     @media only screen and (max-width: 768px) {
       margin: 10px 0 40px;
+    }
+    svg {
+      height: 4vw;
+      width: 5vw;
     }
   }
 

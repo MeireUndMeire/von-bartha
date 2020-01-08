@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Flickity from 'react-flickity-component'
 
 import Layout from "../components/layout"
+import Arrow from '../components/Icons/Arrow'
 
 const Gallery = styled.div`
   margin-bottom: 8rem;
@@ -115,7 +116,7 @@ const artistTemplate = (props) => {
 
         </Linkss>
 
-        <Link className="backLink" to="/artists"><h2>&#8592; all artists</h2></Link>
+        <Link className="backLink" to="/artists"><h2><Arrow width={100} height={100} /> all artists</h2></Link>
       </div>
     </Layout>
   )

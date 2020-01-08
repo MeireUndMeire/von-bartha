@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby'
 
 import Layout from '../../components/layout';
 import styled from "styled-components"
+import Arrow from '../../components/Icons/Arrow'
 
 const Header = styled.h1`
     text-align: left;
@@ -119,7 +120,7 @@ const PublicationsPage = (props) => {
             </PublicationWrapper>
             
             <Back>
-                <Link to="/" className="backLink"><h2>&#8592; Back</h2></Link>
+                <Link to="/" className="backLink"><h2><Arrow width={100} height={100} /> Back</h2></Link>
             </Back>
         </Layout>
     )

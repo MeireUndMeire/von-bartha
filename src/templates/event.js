@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Flickity from 'react-flickity-component'
 
 import Layout from "../components/layout"
+import Arrow from '../components/Icons/Arrow'
 
 const Gallery = styled.div`
   padding-bottom: 8rem;
@@ -164,7 +165,7 @@ const EventTemplate = (props) => {
                 </div>
               } 
         </Linkss>
-        <Link className="backLink" to="/agenda"><h2>&#8592; all events</h2></Link>
+        <Link className="backLink" to="/agenda"><h2><Arrow width={100} height={100} /> all events</h2></Link>
 
       </Event>
     </Layout>
