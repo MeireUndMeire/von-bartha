@@ -88,6 +88,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     img {
+      margin-bottom: 8px;
       height: 33.3vw;
       object-fit: cover;
     }
@@ -244,6 +245,7 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 5px;
     font-family: 'Trade-Gothic';
     font-size: 10px;
+    line-height: 10px;
     text-transform: uppercase;
     word-spacing: 5px;
   }
