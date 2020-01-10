@@ -102,7 +102,7 @@ const artistTemplate = (props) => {
 
         <Linkss className="fullWidth linkBlocks" >
 
-              {artist.acf.cv =! null &&
+              {artist.acf.cv != null &&
               <a href={artist.acf.cv.source_url} download target="_blank" rel="noopener noreferrer">
                 <div className="cv linkBlock">
                   <h2>CV</h2>
@@ -110,7 +110,7 @@ const artistTemplate = (props) => {
               </a>
               }
 
-              {artist.acf.artist_website =! '' &&
+              {artist.acf.artist_website != '' &&
               <a href={`${artist.acf.artist_website}`} target="_blank" rel="noopener noreferrer">
                 <div className="artistWebsite linkBlock">
                   <h2>artists website</h2>
