@@ -165,10 +165,7 @@ export const publicationFragment = graphql`
     color_scheme
     custom_color
     email
-    report_image {
-      title
-      source_url
-    }
+    report_image3
     download {
       source_url
     }

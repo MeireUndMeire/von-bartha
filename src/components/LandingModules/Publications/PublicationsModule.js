@@ -92,9 +92,9 @@ const PublicationsModule = (props) => {
                     </div>
                 }
                 {publication.node.acf.type_of_publication === "Report" && 
-                  publication.node.acf.report_image != null &&
+                  publication.node.acf.img_report != null &&
                     <div className="publication-name">
-                      <img className="hover-item" alt={index} src={publication.node.acf.report_image.source_url} />
+                      <img className="hover-item" alt={index} src={publication.node.acf.report_image3.source_url} />
                     </div>
                 }
               </div>
