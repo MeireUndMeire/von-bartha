@@ -78,7 +78,7 @@ const ExhibitionTemplate = (props) => {
 
         <Titles className="detailHeading">
           {exhibition.acf.artist_object != null &&
-            <h1>{exhibition.acf.artist_object[0].post_name}</h1>
+            <h1>{exhibition.acf.artist_object[0].post_title}</h1>
           }
 
           { exhibition.acf.optional_artist != null &&
@@ -133,7 +133,7 @@ const ExhibitionTemplate = (props) => {
                 exhibition.acf.optional_artist === null &&
                   exhibition.acf.artist_object.length === 1 &&
                   <div className="artistProfile linkBlock" >
-                    <Link to={`artists/${exhibition.acf.artist_object[0].post_name}`}><h2>Artists Profile</h2></Link>
+                    <Link to={`artists/${exhibition.acf.artist_object[0].post_title}`}><h2>Artists Profile</h2></Link>
                   </div>  
               }
               {exhibition.acf.press_release &&
