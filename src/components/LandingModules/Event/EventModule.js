@@ -30,6 +30,7 @@ const Event = styled.div`
       align-self: flex-end;
       img {
         max-width: 50vw;
+        max-height: inherit;
         @media only screen and (max-width: 767px) {
           width: 60vw;
         }
