@@ -132,14 +132,18 @@ const ExhibitionTemplate = (props) => {
               {exhibition.acf.artist_object != null &&
                 exhibition.acf.optional_artist === null &&
                   exhibition.acf.artist_object.length === 1 &&
-                  <div className="artistProfile linkBlock" >
-                    <Link to={`artists/${exhibition.acf.artist_object[0].post_title}`}><h2>Artists Profile</h2></Link>
-                  </div>  
+                  <Link to={`artists/${exhibition.acf.artist_object[0].post_title}`}>
+                    <div className="artistProfile linkBlock" >
+                      <h2>Artists Profile</h2>
+                    </div>  
+                  </Link>
               }
               {exhibition.acf.press_release &&
+              <a href={exhibition.acf.press_release.source_url} download target="_blank" rel="noopener noreferrer">
                 <div className="pressRelease linkBlock">
-                  <a href={exhibition.acf.press_release.source_url} download target="_blank" rel="noopener noreferrer"><h2>Press Release</h2></a>
+                  <h2>Press Release</h2>
                 </div>
+              </a>
               } 
         </Linkss>
         <Link className="backLink" to="/exhibitions"><h2><Arrow width={100} height={100} /> all exhibitions</h2></Link>

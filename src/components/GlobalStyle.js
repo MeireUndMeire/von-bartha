@@ -100,6 +100,9 @@ const GlobalStyle = createGlobalStyle`
     @media only screen and (max-width: 767px) {
       flex-direction: column;
     }
+    a {
+      width: fill-available;
+    }
     .linkBlock {
       @media only screen and (max-width: 767px) {
         width: 100%; 
