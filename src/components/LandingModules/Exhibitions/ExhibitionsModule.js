@@ -27,6 +27,7 @@ const OnViewWrapper = styled.div`
     }
     &.past {
       padding-bottom: 10vw;
+      padding-top: 2rem;
       .two-grid-item {
         margin-bottom: 0;
       }
@@ -198,7 +199,7 @@ const ExhibitionsModule = (props) => {
       }
     
       {/* past */}
-      {soonEvents.length !== 0 &&
+      {pastEvents.length !== 0 &&
       <div>
         <OnViewWrapper className="OnViewWrapper past" className={`past ${value === 0 ? 'show' : 'hide'}`}>
         {allExhibitions.edges.map(exhibition => {
