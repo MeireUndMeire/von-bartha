@@ -141,9 +141,7 @@ export const eventFragment = graphql`
           vermilion_red
         }
       }
-      fullwidth_image {
-        source_url
-      }
+      fullwidth_image2
       gallery_module_events {
         slides {
           image {

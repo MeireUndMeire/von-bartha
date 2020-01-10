@@ -113,8 +113,8 @@ const EventTemplate = (props) => {
             }
 
           </Titles>  
-          {event.acf.fullwidth_image != null &&
-          <img className="headerImage" alt={event.acf.fullwidth_image.source_url} src={event.acf.fullwidth_image.source_url} />
+          {event.acf.fullwidth_image2 != null &&
+          <img className="headerImage" alt={event.acf.fullwidth_image2} src={event.acf.fullwidth_image2} />
           }
           {event.acf.event_subtitle != null &&
             <h2>{event.acf.event_subtitle}</h2>
@@ -155,14 +155,18 @@ const EventTemplate = (props) => {
 
         <Linkss className="fullWidth linkBlocks">
               {event.acf.link_url != null &&
+                <a href={`${event.acf.link_url}`} target="_blank" rel="noopener noreferrer">
                   <div className="eventLink linkBlock" >
-                    <a href={`${event.acf.link_url}`} target="_blank" rel="noopener noreferrer"><h2>{event.acf.link_text}</h2></a>
+                    <h2>{event.acf.link_text}</h2>
                   </div>  
+                </a>
               }
               {event.acf.download_file != null &&
+              <a href={event.acf.download_file.source_url} download target="_blank" rel="noopener noreferrer">
                 <div className="timetable linkBlock">
-                  <a href={event.acf.download_file.source_url} download target="_blank" rel="noopener noreferrer"><h2>{event.acf.download_text}</h2></a>
+                  <h2>{event.acf.download_text}</h2>
                 </div>
+              </a>
               } 
         </Linkss>
         <Link className="backLink" to="/agenda"><h2><Arrow width={100} height={100} /> all events</h2></Link>
