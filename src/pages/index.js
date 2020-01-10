@@ -159,9 +159,7 @@ export const pageQuery = graphql`
             event_name
             starting_date(formatString: "MMM DD YYYY")
             event_location
-            fullwidth_image {
-              source_url
-            }
+            fullwidth_image2
           }
         }
       }
