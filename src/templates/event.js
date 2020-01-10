@@ -186,7 +186,7 @@ export const eventTemplateQuery = graphql`
         title
       }
     }
-    allWordpressWpEvents(filter: {slug: { eq: $slug}}) {
+    allWordpressWpEvents(filter: {slug: { eq: $slug}, title: { ne: "DO NOT REMOVE"}}) {
       edges {
         node {
           id

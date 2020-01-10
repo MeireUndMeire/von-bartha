@@ -158,7 +158,7 @@ export default AgendaPage
 
 export const EventsQuery = graphql`
 {
-    allWordpressWpEvents(sort: {order: DESC, fields: acf___starting_date}) {
+    allWordpressWpEvents(sort: {order: DESC, fields: acf___starting_date}, filter: {slug: {ne: "do-not-remove"}}) {
         edges {
             node {
                 id
