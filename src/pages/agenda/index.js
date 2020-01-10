@@ -23,6 +23,9 @@ const Heading = styled.div`
 `
 
 const EventItem = styled.div`
+    img {
+        object-fit: contain;
+    }
 `
 
 const Back = styled.div`
