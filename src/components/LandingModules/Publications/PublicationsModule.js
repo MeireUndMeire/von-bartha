@@ -29,6 +29,9 @@ const PublicationsModule = (props) => {
     }
     .publicationsList {
       padding: 5rem 0 5rem;
+      @media only screen and (max-width: 767px) {
+        padding: 2rem 0 5rem;
+      }
     }
   `
 
@@ -41,6 +44,9 @@ const PublicationsModule = (props) => {
   img {
     max-width: 20vw;
     width: auto;
+    @media only screen and (max-width: 767px) {
+      max-width: 40vw;
+    }
   }
   .flickity-slider {
     display: flex;
@@ -52,6 +58,9 @@ const PublicationsModule = (props) => {
     margin-left: 1rem;
     &:first-child {
       margin-left: 0;
+    }
+    @media only screen and (max-width: 767px) {
+      margin-left: .5rem;
     }
   }
   .caption {

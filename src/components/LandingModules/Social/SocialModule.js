@@ -21,6 +21,9 @@ const Social = styled.div`
   h2 {
     color: #BCCABA;
     margin-left: 8vw;
+    @media only screen and (max-width: 767px) {
+      margin-left: 0;
+    }
   }
   .wrapper {
     display: flex;
@@ -28,8 +31,23 @@ const Social = styled.div`
     overflow-y: hidden;
     white-space: nowrap;
     margin-left: 0;
+    @media only screen and (max-width: 767px) {
+      margin-top: 20px;
+      margin-left: 8vw;
+      display: inline-grid;
+      a {
+        width: fit-content;
+      }
+    }
     h2 {
       margin-right: 8vw;
+      @media only screen and (max-width: 767px) {
+        border-bottom: 2px solid #BCCABA;
+        line-height: 4.497vw;
+        margin-bottom: 10px;
+        margin-right: 0;
+        width: fit-content;
+      }
     }
   }
 `

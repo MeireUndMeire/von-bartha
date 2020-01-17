@@ -30,6 +30,10 @@ const About = styled.div`
   .right {
     width: fit-content;
     align-self: flex-end;
+    @media only screen and (max-width: 767px) {
+      align-self: unset;
+      padding-left: 8vw;
+    }
   }
 `
 

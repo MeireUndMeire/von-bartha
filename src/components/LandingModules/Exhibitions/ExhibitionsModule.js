@@ -42,6 +42,7 @@ const OnViewWrapper = styled.div`
         margin-left: -1vw;
         @media only screen and (max-width: 767px) {
           width: 96vw;
+          margin-left: 0;
         }
     }
     .textWrapper {
@@ -70,6 +71,10 @@ const OnViewWrapper = styled.div`
       h2 {
         width: fit-content;
       }
+      @media only screen and (max-width: 767px) {
+        justify-content: unset;
+        padding-left: 8vw;
+      }
     }
 `
 
@@ -90,7 +95,13 @@ const Heading = styled.div`
 `
 
 const ExhibitionItem = styled.div`
-  margin-bottom: 10vw;
+  margin-bottom: 6vw;
+  .date-small {
+    @media only screen and (max-width: 767px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
 `
 
 const ExhibitionsModule = (props) => {
@@ -210,8 +221,10 @@ const ExhibitionsModule = (props) => {
                     resultAmountPast++,
                     <ExhibitionItem className="two-grid-item" key={exhibition.node.id}>
                       <Link className="link" to={exhibition.node.path}>
-                          <p className="date-small">Until {exhibition.node.acf.ending_date}</p>
-                          {exhibition.node.acf.fullwidth_image != null &&
+                          {exhibition.node.acf.starting_date !== null &&
+                            <p className="date-small">{exhibition.node.acf.starting_date} – {exhibition.node.acf.ending_date}</p>
+                          }
+                          {exhibition.node.acf.fullwidth_image !== null &&
                           <img alt={exhibition.node.acf.fullwidth_image.title} src={exhibition.node.acf.fullwidth_image.source_url} />
                           }
                           <h1>{exhibition.node.title}</h1>

@@ -17,7 +17,12 @@ const Event = styled.div`
     width: 100vw;
   }
   h1, h2 {
-    margin-left: 8vw;
+    margin-left: 9vw;
+    @media only screen and (max-width: 767px) {
+      margin-left: 0;
+      text-align: right;
+      margin-right: 2vw;
+    }
   }
   .wrapper {
     display: flex;
@@ -28,11 +33,15 @@ const Event = styled.div`
     .image {
       display: flex;
       align-self: flex-end;
+      @media only screen and (max-width: 767px) {
+        align-self: flex-start;
+      }
       img {
         max-width: 50vw;
         max-height: inherit;
         @media only screen and (max-width: 767px) {
           width: 60vw;
+          align-self: flex-end;
         }
       }
     }
@@ -47,9 +56,26 @@ const Event = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    @media only screen and (max-width: 767px) {
+      top: 88%;
+      transform: translateY(-50%);
+      left: 0;
+      margin-left: 8vw;
+      background-color: transparent;
+      padding: 0;
+      border-radius: none;
+    }
 
     h1 {
-      color: #FFF;
+      @media only screen and (min-width: 768px) {
+        color: #FFF !important;
+        border-bottom: none !important;
+      }
+      @media only screen and (max-width: 767px) {
+        border-bottom: 2px solid;
+        line-height: 2rem;
+        margin-right: 0;
+      }
       font-size: 2rem;
       line-height: 3rem;
       margin-left: 0;
@@ -86,7 +112,7 @@ const EventModule = ({allEvents, event}) => {
                   <img src={image.source_url} />
                 </div>
               </div>
-              <Link className="eventLink" to={`/events/${event.node.slug}`}><h1>Read more</h1></Link>
+              <Link className="eventLink" to={`/events/${event.node.slug}`}><h1 style={{color: textColor, borderColor: textColor}}>Read more</h1></Link>
             </Event>
           )
         }

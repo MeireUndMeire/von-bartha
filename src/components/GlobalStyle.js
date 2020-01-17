@@ -74,7 +74,7 @@ const GlobalStyle = createGlobalStyle`
   .two-grid-item {
     @media only screen and (max-width: 767px) {
       width: 100%;
-      padding-bottom: 5.714vw;
+      padding-bottom: 8vw;
       &:nth-child(even){
         padding-left: 0;
       }
@@ -91,6 +91,9 @@ const GlobalStyle = createGlobalStyle`
       margin-bottom: 8px;
       height: 33.3vw;
       object-fit: cover;
+      @media only screen and (max-width: 767px) {
+        height: auto;
+      }
     }
   }
 

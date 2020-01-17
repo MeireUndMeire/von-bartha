@@ -37,13 +37,28 @@ const Table = styled.div`
     width: fit-content;
     float: left;
     margin-left: 10vw;
+    @media only screen and (max-width: 767px) {
+      margin-left: 0;
+      width: 50%
+    }
     &:last-child {
       float: right;
       text-align: right;
       margin-left: 0;
+      @media only screen and (max-width: 767px) {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        width: 100%;
+        float: left;
+        text-align: left;
+      }
     }
     &:first-child {
       margin-left: 0;
+      @media only screen and (max-width: 767px) {
+        margin-bottom: 2rem;
+        width: 100%;
+      }
     }
     .wys p {
       color: #FFF;
@@ -66,7 +81,7 @@ const FooterWrapper = styled.div`
   }
   padding: 1vw 1vw 8vw;
   @media only screen and (max-width: 767px) {
-    padding-bottom: 2vw;
+    padding: 2vw 2vw 2vw;
   }
 `
 
