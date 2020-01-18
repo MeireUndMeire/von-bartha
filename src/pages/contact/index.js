@@ -22,6 +22,12 @@ const Staff = styled.div`
     h1.overviewHeading {
         padding-top: 0;
     }
+    @media only screen and (max-width: 767px) {
+        .date-small {
+            margin-top: .3rem;
+            margin-bottom: 1rem;
+        }
+    }
 `
 
 const Page = styled.div`
@@ -29,6 +35,9 @@ const Page = styled.div`
         width: 98vw;
         max-height: none;
         padding: 1vw 1vw 7vw;
+        @media only screen and (max-width: 767px) {
+            padding: 5vw 1vw 7vw;
+        }
     }
     .overviewHeading {
         padding-top: 5vw;
@@ -48,6 +57,10 @@ const About = styled.div`
     padding-bottom: 10vw;
     h1 {
         text-align: center;
+        @media only screen and (max-width: 767px) {
+            text-align: inherit !important;
+            margin-left: 20%;
+        }
     }
     .imageWrapper {
         @media only screen and (max-width: 767px) {
@@ -57,21 +70,31 @@ const About = styled.div`
         max-width: 70vw;
         caption {
             margin-left: 40px;
+            @media only screen and (max-width: 767px) {
+                margin-left: 20.5%;
+            }
         }
     }
-    .caption > p{
-        @media only screen and (max-width: 767px) {
-            margin-left: 20.5%;
-        }
-        margin-left: 11.5%;
+    .caption > p, .caption > div {
         margin-top: 10px;
         font-family: 'Trade-Gothic';
         font-size: 1rem;
         line-height: 20px;
-        margin-bottom: 5px;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .caption {
+        margin-top: 1rem;
+        margin-left: 11.5%;
+        @media only screen and (max-width: 767px) {
+            margin-left: 20%;
+        }
     }
     .overviewHeading {
         padding-bottom: 0;
+        @media only screen and (max-width: 767px) {
+            padding-top: 5.8vw;
+        }
     }
 `
 
@@ -81,6 +104,10 @@ const Locations = styled.div`
         font-size: 18px;
         line-height: 18px;
         font-family: 'Trade-Gothic';
+        @media only screen and (max-width: 767px) {
+            margin-top: 0;
+            margin-bottom: 5rem;
+        }
     }
     .additionalInfo p {
         font-family: 'Trade-Gothic';
@@ -93,6 +120,11 @@ const Locations = styled.div`
 
 const Location = styled.div`
     padding: 10px 0 60px;
+    .two-grid-item {
+        @media only screen and (max-width: 767px) {
+            padding-bottom: 0;
+        }
+    }
 `
 
 const LocationItem = styled.div`
@@ -105,12 +137,6 @@ const LocationItem = styled.div`
         .second {
             display: table-header-group;
         }
-    }
-`
-
-const ArtistItem = styled.div`
-    .date-small {
-        margin: 0;
     }
 `
 

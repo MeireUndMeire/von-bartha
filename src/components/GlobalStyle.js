@@ -110,7 +110,7 @@ const GlobalStyle = createGlobalStyle`
     .linkBlock {
       @media only screen and (max-width: 767px) {
         width: 100%; 
-        height: 80px; 
+        height: 90px; 
       }
       width: fill-available;
       height: calc(5.297vw * 3) ;
@@ -181,7 +181,7 @@ const GlobalStyle = createGlobalStyle`
   .detailTextblock {
     @media only screen and (max-width: 767px) {
     width: 75%;
-    margin: 40px 20% 40px;
+    margin: 40px 20% 5rem;
     }
     width: 55%;
     max-width: 820px;

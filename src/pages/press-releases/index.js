@@ -22,8 +22,13 @@ const PressItem = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
-
     margin-bottom: 2vw;
+
+    @media only screen and (max-width: 767px) {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+    }
 
     &:last-child {
         margin-bottom: 10vw;
@@ -31,6 +36,9 @@ const PressItem = styled.div`
 
     .date-small {
         margin: 0;
+        @media only screen and (max-width: 767px) {
+            margin-bottom: .3rem;
+        }
     }
     .p2 {
 

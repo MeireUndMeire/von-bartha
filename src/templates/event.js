@@ -7,12 +7,18 @@ import Layout from "../components/layout"
 import Arrow from '../components/Icons/Arrow'
 
 const Gallery = styled.div`
-  padding-bottom: 8rem;
+  padding-bottom: 4rem;
+  @media only screen and (max-width: 767px) {
+    padding-bottom: 2rem;
+  }
 
   img {
     max-height: 70vh;
     max-width: 70vw;
     width: auto;
+    @media only screen and (max-width: 767px) {
+      max-width: 96vw;
+    }
   }
   .flickity-slider {
     display: flex;
@@ -30,7 +36,9 @@ const Gallery = styled.div`
     margin-top: 1rem;
     margin-left: 2rem;
     max-width: fit-content;
-    height: 6rem;
+    @media only screen and (max-width: 767px) {
+      margin-left: 20%;
+    }
   }
   .caption > p {
     font-family: 'Trade-Gothic';
@@ -49,6 +57,11 @@ const Event = styled.div`
     width: 98vw;
     margin-left: -1vw;
     padding: 0 1vw;
+    padding-bottom: 4rem;
+    @media only screen and (max-width: 767px) {
+      margin-left: -2vw;
+      padding-bottom: 2rem;
+    }
   }
   .fullWidth {
     max-height: none;
@@ -62,6 +75,12 @@ const Event = styled.div`
   .headerImage {
     width: 100vw;
     margin-left: -1vw;
+  }
+  .sublines {
+    margin-top: .5rem;
+    @media only screen and (max-width: 767px) {
+      margin-top: 1rem;
+    }
   }
 `
 
@@ -103,7 +122,7 @@ const EventTemplate = (props) => {
           <Titles className="detailHeading">
 
             {event.title &&
-              <h1>{event.title}</h1>
+              <h1><div dangerouslySetInnerHTML={{ __html: event.title }}></div></h1>
             }
 
             { event.acf.optional_artist != null &&
@@ -112,17 +131,18 @@ const EventTemplate = (props) => {
               ))
             }
 
-          </Titles>  
+          </Titles> 
+          
           {event.acf.fullwidth_image2 != null &&
           <img className="headerImage" alt={event.acf.fullwidth_image2} src={event.acf.fullwidth_image2} />
           }
-          {event.acf.event_subtitle != null &&
-            <h2>{event.acf.event_subtitle}</h2>
-          }
-          
-          <h2>{event.acf.starting_date} – {event.acf.ending_date}</h2>
-          <h2>{event.acf.event_location}</h2>
-          
+          <div className="sublines">
+            {event.acf.event_subtitle != null &&
+              <h2>{event.acf.event_subtitle}</h2>
+            }
+            <h2>{event.acf.starting_date} – {event.acf.ending_date}</h2>
+            <h2>{event.acf.event_location}</h2>
+          </div> 
           {event.acf.textblock != null &&
             <Textblock className="detailTextblock"><div dangerouslySetInnerHTML={{ __html: event.acf.textblock }}></div></Textblock>
           }

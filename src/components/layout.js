@@ -134,6 +134,9 @@ const NavHome = styled.div`
 
 const PageContent = styled.div`
   padding-top: 20vw;
+  @media only screen and (max-width: 767px) {
+    padding-top: 13vw;
+  }
 `
 
 const FooterWrapper = styled.footer`

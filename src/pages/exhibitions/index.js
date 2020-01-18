@@ -8,7 +8,10 @@ import Arrow from '../../components/Icons/Arrow'
 
 const Header = styled.h1`
     text-align: left;
-    margin-bottom: 40px;
+    margin-bottom: 4vw;
+    @media only screen and (max-width: 767px) {
+        margin-bottom: 10vw;
+    }
 `
 
 const OnViewWrapper = styled.div`
@@ -23,7 +26,12 @@ const Heading = styled.div`
 `
 
 const ExhibitionItem = styled.div`
-
+    .date-small {
+        @media only screen and (max-width: 767px) {
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
 `
 
 const Back = styled.div`

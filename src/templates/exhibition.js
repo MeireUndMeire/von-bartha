@@ -6,8 +6,20 @@ import Flickity from 'react-flickity-component'
 import Layout from "../components/layout"
 import Arrow from '../components/Icons/Arrow'
 
+const Exhibition = styled.div`
+  .sublines {
+    margin-top: .5rem;
+    @media only screen and (max-width: 767px) {
+      margin-top: 1rem;
+    }
+  }
+`
+
 const Gallery = styled.div`
-  margin-bottom: 8rem;
+  padding-bottom: 6rem;
+  @media only screen and (max-width: 767px) {
+    padding-bottom: 2rem;
+  }
 
   img {
     max-height: 70vh;
@@ -30,7 +42,6 @@ const Gallery = styled.div`
     margin-top: 1rem;
     margin-left: 2rem;
     max-width: fit-content;
-    height: 6rem;
   }
   .caption > p {
     font-family: 'Trade-Gothic';
@@ -74,7 +85,7 @@ const ExhibitionTemplate = (props) => {
 
   return (
     <Layout>
-      <div className="exhibition">
+      <Exhibition className="exhibition">
 
         <Titles className="detailHeading">
           {exhibition.acf.artist_object != null &&
@@ -93,16 +104,18 @@ const ExhibitionTemplate = (props) => {
         {exhibition.acf.fullwidth_image != null &&
           <img className="fullWidth" alt="" src={exhibition.acf.fullwidth_image.source_url} />
         }
-        <h2>
-          {exhibition.acf.starting_date != null &&
-            `${exhibition.acf.starting_date}`
-          }
-          {exhibition.acf.ending_date != null &&
-           ` – ${exhibition.acf.ending_date}`
-          }
-        </h2>
-        
-        <h2>{exhibition.acf.exhibition_location}</h2>
+        <div className="sublines">
+          <h2>
+            {exhibition.acf.starting_date != null &&
+              `${exhibition.acf.starting_date}`
+            }
+            {exhibition.acf.ending_date != null &&
+            ` – ${exhibition.acf.ending_date}`
+            }
+          </h2>
+
+          <h2>{exhibition.acf.exhibition_location}</h2>
+        </div>
         
         {exhibition.acf.textblock &&
           <Textblock className="detailTextblock"><div dangerouslySetInnerHTML={{ __html: exhibition.acf.textblock }}></div></Textblock>
@@ -147,7 +160,7 @@ const ExhibitionTemplate = (props) => {
               } 
         </Linkss>
         <Link className="backLink" to="/exhibitions"><h2><Arrow width={100} height={100} /> all exhibitions</h2></Link>
-      </div>
+      </Exhibition>
     </Layout>
   )
 

@@ -32,7 +32,12 @@ const PublicationItem = styled.div`
         height: 33.3vw;
         @media only screen and (max-width: 767px) {
             background-size: 50%;
+            height: 66.6vw;
+            margin-bottom: 1rem;
         }
+    }
+    h1 {
+
     }
     .textWrapper {
         display: flex;

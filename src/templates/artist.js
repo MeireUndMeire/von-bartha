@@ -7,7 +7,10 @@ import Layout from "../components/layout"
 import Arrow from '../components/Icons/Arrow'
 
 const Gallery = styled.div`
-  margin-bottom: 8rem;
+  padding-bottom: 4rem;
+  @media only screen and (max-width: 767px) {
+    padding-bottom: 2rem;
+  }
 
   img {
     max-height: 70vh;
@@ -30,13 +33,27 @@ const Gallery = styled.div`
     margin-top: 1rem;
     margin-left: 2rem;
     max-width: fit-content;
-    height: 6rem;
   }
   .caption > p {
     font-family: 'Trade-Gothic';
     font-size: 1rem;
     line-height: 20px;
     margin-bottom: 5px;
+  }
+`
+
+const Artist = styled.div`
+  margin-top: -10vw;
+  padding-bottom: 4rem;
+  @media only screen and (max-width: 767px) {
+    margin-top: 0;
+    padding-bottom: 2rem;
+  }
+  h1 {
+    margin-top: .5rem;
+    @media only screen and (max-width: 767px) {
+
+    }
   }
 `
 
@@ -72,7 +89,7 @@ const artistTemplate = (props) => {
   
   return (
     <Layout>
-      <div className="artist">
+      <Artist className="artist">
         <img className="fullWidth" alt={artist.acf.fullwidth_image.title} src={artist.acf.fullwidth_image.source_url} />
         <h1>{artist.title}</h1>
         
@@ -121,7 +138,7 @@ const artistTemplate = (props) => {
         </Linkss>
 
         <Link className="backLink" to="/artists"><h2><Arrow width={100} height={100} /> all artists</h2></Link>
-      </div>
+      </Artist>
     </Layout>
   )
 
