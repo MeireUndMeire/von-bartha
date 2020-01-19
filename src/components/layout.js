@@ -56,6 +56,11 @@ const NavHome = styled.div`
   padding: 1rem 0;
   width: 98vw !important;
   padding: 1vw;
+  @media only screen and (max-width: 767px) {
+    padding: 3vw;
+    padding-left: 3vw;
+    width: 96vw !important;
+  }
   #nav-burger span:nth-child(1) {
     top: 0px;
     -webkit-transform-origin: left center;
@@ -95,7 +100,6 @@ const NavHome = styled.div`
     margin-top: 2px;
     @media only screen and (max-width: 767px) {
       height: 16px;
-      margin-top: 7px;
     }
     position: relative;
     -webkit-transform: rotate(0deg);
@@ -123,6 +127,9 @@ const NavHome = styled.div`
       -moz-transition: .25s ease-in-out;
       -o-transition: .25s ease-in-out;
       transition: .25s ease-in-out;
+      @media only screen and (max-width: 767px) {
+        height: 4px;
+      }
     }
   }
   .home {
